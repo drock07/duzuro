@@ -1,0 +1,59 @@
+body {
+  background-color: #404040;
+  color: #fefefe;
+}
+
+a {
+  color: #fefefe;
+}
+
+section {
+  position: relative;
+  padding: 80px 0;
+}
+section:nth-child(odd) {
+  background-color: #545454;
+}
+section header {
+  margin-bottom: 20px;
+}
+section .up-link {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 50px;
+  height: 50px;
+  padding: 10px 14px;
+  font-size: 25px;
+  border-radius: 8px;
+  background-color: rgba(254, 254, 254, 0.2);
+}
+
+#intro .logo h1 {
+  font-size: 19vw;
+}
+
+#who-are-we .photo-wrapper {
+  width: 60%;
+  max-width: 200px;
+  margin: auto;
+}
+#who-are-we .profile {
+  margin-bottom: 50px;
+}
+
+#m1 .bs-0 p, #m1 .bs-1 p {
+  font-size: 25px;
+}
+#m1 .bs-0 {
+  margin-bottom: 30px;
+}
+#m1 .bs-0 p {
+  padding-top: 68px;
+}
+#m1 .bs-1 {
+  margin-bottom: 50px;
+}
+#m1 .bs-1 p {
+  padding-top: 50px;
+}

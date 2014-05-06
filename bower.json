@@ -1,0 +1,35 @@
+{
+  "name": "duzuro",
+  "version": "0.0.0",
+  "homepage": "https://drock07.github.io/duzuro",
+  "authors": [
+    "David Rockwood <david.w.rockwood@gmail.com>"
+  ],
+  "description": "Duzuro app for CS247",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules"
+  ],
+  "dependencies": {
+    "angular": "",
+    "angular-ui-router": "",
+    "angular-animate": "",
+    "jquery": ""
+  },
+  "exportsOverride": {
+    "angular": {
+      "ng": "angular.min.js"
+    },
+    "angular-ui-router": {
+      "ng": "release/angular-ui-router.min.js"
+    },
+    "angular-animate": {
+      "ng": "angular-animate.min.js"
+    },
+    "jquery": {
+      "jquery": "dist/jquery.min.js"
+    }
+  }
+}

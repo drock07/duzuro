@@ -52,15 +52,23 @@ module.exports = function(grunt) {
 			},
 			angular: {
 				src: [
-					'./js-pre/ng/angular/*.js', 
-					'./js-pre/ng/angular-ui-router/*.js',
-					'./js-pre/ng/angular-animate/*.js'
+					'./js-libs/ng/angular/*.js', 
+					'./js-libs/ng/angular-ui-router/*.js',
+					'./js-libs/ng/angular-animate/*.js',
+					'./js-libs/ng/angularfire/angularfire.min.js'
 				],
 				dest: './public/js/angular.min.js'
 			},
 			jquery: {
-				src: ['./js-pre/jquery/jquery/*.js'],
+				src: ['./js-libs/jquery/jquery/*.js'],
 				dest: './public/js/jquery.min.js'
+			},
+			firebase: {
+				src: [
+					'./js-libs/firebase/firebase/firebase.js',
+					'./js-libs/firebase/firebase-simple-login/firebase-simple-login.js'
+				],
+				dest: './public/js/firebase.min.js'
 			}
 		},
 
@@ -117,8 +125,9 @@ module.exports = function(grunt) {
 		bower: {
 			install: {
 				options: {
-					targetDir: './js-pre',
-					cleanBowerDir: true,
+					targetDir: './js-libs',
+					// cleanBowerDir: true,
+					cleanup: true,
 					layout: 'byType'
 				}
 			}
@@ -152,6 +161,7 @@ module.exports = function(grunt) {
 
 	grunt.registerTask('setup', [
 		'bower:install', 
+		'concat:firebase',
 		'concat:angular', 
 		'concat:jquery'
 	]);

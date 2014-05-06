@@ -12,11 +12,13 @@
     "**/.*",
     "node_modules"
   ],
-  "dependencies": {
-    "angular": "",
-    "angular-ui-router": "",
-    "angular-animate": "",
-    "jquery": ""
+  "devDependencies": {
+    "firebase": "~1.0.15",
+    "angularfire": "~0.7.1",
+    "angular": "~1.2.16",
+    "angular-ui-router": "~0.2.10",
+    "angular-animate": "~1.2.16",
+    "jquery": "~2.1.1"
   },
   "exportsOverride": {
     "angular": {
@@ -27,6 +29,15 @@
     },
     "angular-animate": {
       "ng": "angular-animate.min.js"
+    },
+    "angularfire": {
+      "ng": "angularfire.min.js"
+    },
+    "firebase": {
+      "firebase": "firebase.js"
+    },
+    "firebase-simple-login": {
+      "firebase": "firebase-simple-login.js"
     },
     "jquery": {
       "jquery": "dist/jquery.min.js"

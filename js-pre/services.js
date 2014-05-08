@@ -26,6 +26,14 @@ duzuroServices.factory('Questions', ['$firebase',
 				return fb_questions.$child(qid);
 			},
 
+			getAnswers: function(qid) {
+				return fb_questions.$child(qid + "/answers");
+			},
+
+			getAnswer: function(qid, aid) {
+				return fb_questions.$child(qid + "/answers/" + aid);
+			},
+
 			setPriority: function(id, priority) {
 				var question = fb_questions.$child(id);
 				question.$priority = priority;
@@ -42,6 +50,14 @@ duzuroServices.factory('Questions', ['$firebase',
 					details: details,
 					time: time,
 					humanTime: humanTime
+				});
+			},
+
+			addAnswer: function(id, username, answer) {
+				var question = fb_questions.$child(id + "/answers");
+				question.$add({
+					username: username,
+					answer: answer
 				});
 			}
 		};

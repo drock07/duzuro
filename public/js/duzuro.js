@@ -70,9 +70,18 @@ duzuroApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
 			.state('videoViewer.readQuestion.writeAnswer', {
 				url: '/answer',
 				views: {
-					'bottomFrame': {
-						templateUrl: '/partials/videoViewer/WriteAnswerFrame.html',
-						// controller: 'AddQuestionCtrl'
+					'bottomFrame@videoViewer': {
+						templateUrl: '/partials/videoViewer/writeAnswerFrame.html',
+						controller: 'WriteAnswerCtrl'
+					}
+				}
+			})
+			.state('videoViewer.readQuestion.readAnswer', {
+				url: '/answer/:aid',
+				views: {
+					'bottomFrame@videoViewer': {
+						templateUrl: '/partials/videoViewer/readAnswerFrame.html',
+						controller: 'WriteAnswerCtrl'
 					}
 				}
 			});
@@ -106,6 +115,14 @@ duzuroServices.factory('Questions', ['$firebase',
 				return fb_questions.$child(qid);
 			},
 
+			getAnswers: function(qid) {
+				return fb_questions.$child(qid + "/answers");
+			},
+
+			getAnswer: function(qid, aid) {
+				return fb_questions.$child(qid + "/answers/" + aid);
+			},
+
 			setPriority: function(id, priority) {
 				var question = fb_questions.$child(id);
 				question.$priority = priority;
@@ -122,6 +139,14 @@ duzuroServices.factory('Questions', ['$firebase',
 					details: details,
 					time: time,
 					humanTime: humanTime
+				});
+			},
+
+			addAnswer: function(id, username, answer) {
+				var question = fb_questions.$child(id + "/answers");
+				question.$add({
+					username: username,
+					answer: answer
 				});
 			}
 		};
@@ -212,6 +237,9 @@ duzuroApp.controller('QuestionsViewerCtrl', ['$scope', 'Questions',
 
 duzuroApp.controller('QuestionViewerCtrl', ['$scope', '$stateParams', 'Questions',
 	function($scope, $stateParams, Questions) {
+
+		$scope.answers = Questions.getAnswers($stateParams['qid']);
+
 		$scope.question = Questions.get($stateParams['qid']);
 	}
 ]);
@@ -248,5 +276,40 @@ duzuroApp.controller('AddQuestionCtrl', ['$scope', '$state', 'Questions', 'Video
 				return false;
 			}
 		}
+	}
+]);
+
+duzuroApp.controller('WriteAnswerCtrl', ['$scope', '$state', '$stateParams', 'Questions',
+	function($scope, $state, $stateParams, Questions) {
+
+		$scope.addAnswer = function() {
+			if(validateFields()) {
+				var username = 'anonymous';
+				if($scope.answerer)
+					username = $scope.answerer;
+				
+				Questions.addAnswer($stateParams['qid'], username, $scope.answer);
+				$state.go('^');
+			}
+		};
+
+		$scope.cancelAddAnswer = function() {
+			$state.go('^');
+		};
+
+		function validateFields() {
+			if ($scope.answer) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+	}
+]);
+
+duzuroApp.controller('ReadAnswerCtrl', ['$scope', '$state', '$stateParams', 'Questions',
+	function($scope, $state, $stateParams, Questions) {
+
+		$scope.answer = Questions.getAnswer($stateParams['qid'], $stateParams['aid']);
 	}
 ]);

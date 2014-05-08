@@ -83,6 +83,9 @@ duzuroApp.controller('QuestionsViewerCtrl', ['$scope', 'Questions',
 
 duzuroApp.controller('QuestionViewerCtrl', ['$scope', '$stateParams', 'Questions',
 	function($scope, $stateParams, Questions) {
+
+		$scope.answers = Questions.getAnswers($stateParams['qid']);
+
 		$scope.question = Questions.get($stateParams['qid']);
 	}
 ]);
@@ -119,5 +122,40 @@ duzuroApp.controller('AddQuestionCtrl', ['$scope', '$state', 'Questions', 'Video
 				return false;
 			}
 		}
+	}
+]);
+
+duzuroApp.controller('WriteAnswerCtrl', ['$scope', '$state', '$stateParams', 'Questions',
+	function($scope, $state, $stateParams, Questions) {
+
+		$scope.addAnswer = function() {
+			if(validateFields()) {
+				var username = 'anonymous';
+				if($scope.answerer)
+					username = $scope.answerer;
+				
+				Questions.addAnswer($stateParams['qid'], username, $scope.answer);
+				$state.go('^');
+			}
+		};
+
+		$scope.cancelAddAnswer = function() {
+			$state.go('^');
+		};
+
+		function validateFields() {
+			if ($scope.answer) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+	}
+]);
+
+duzuroApp.controller('ReadAnswerCtrl', ['$scope', '$state', '$stateParams', 'Questions',
+	function($scope, $state, $stateParams, Questions) {
+
+		$scope.answer = Questions.getAnswer($stateParams['qid'], $stateParams['aid']);
 	}
 ]);

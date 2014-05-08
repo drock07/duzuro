@@ -70,9 +70,18 @@ duzuroApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
 			.state('videoViewer.readQuestion.writeAnswer', {
 				url: '/answer',
 				views: {
-					'bottomFrame': {
-						templateUrl: '/partials/videoViewer/WriteAnswerFrame.html',
-						// controller: 'AddQuestionCtrl'
+					'bottomFrame@videoViewer': {
+						templateUrl: '/partials/videoViewer/writeAnswerFrame.html',
+						controller: 'WriteAnswerCtrl'
+					}
+				}
+			})
+			.state('videoViewer.readQuestion.readAnswer', {
+				url: '/answer/:aid',
+				views: {
+					'bottomFrame@videoViewer': {
+						templateUrl: '/partials/videoViewer/readAnswerFrame.html',
+						controller: 'WriteAnswerCtrl'
 					}
 				}
 			});

@@ -11,7 +11,7 @@
 	<div class="list-wrapper">
 		<div class="list">
 			<div class="answer" ng-repeat="(aid, answer) in answers">
-				<a ui-sref="videoViewer.readQuestion({aid: aid})">{{ answer.title }} <br /> {{ answer.humanTime }}</a>
+				<a ui-sref=".readAnswer({aid: aid})">by {{ answer.username }}</a>
 			</div>
 			<div class="answer"><a ui-sref=".writeAnswer"><i class="ra-icon-plus"></i> Add answer</a></div>
 		</div>

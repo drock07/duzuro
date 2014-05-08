@@ -29,14 +29,14 @@ duzuroApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
 				url: '/',
 				views: {
 					'@' : {
-						templateUrl: '/partials/videoViewerBase.html'
+						templateUrl: '/partials/videoViewer/videoViewerBase.html'
 					},
 					'sideFrame@videoViewer': {
-						templateUrl: '/partials/questionsViewer.html',
+						templateUrl: '/partials/videoViewer/questionsViewerFrame.html',
 						controller: 'QuestionsViewerCtrl'
 					},
 					'videoFrame@videoViewer': {
-						templateUrl: '/partials/videoViewer.html'
+						templateUrl: '/partials/videoViewer/videoViewerFrame.html'
 					}
 				}
 			})
@@ -44,7 +44,7 @@ duzuroApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
 				url: 'ask',
 				views: {
 					'bottomFrame': {
-						templateUrl: '/partials/askQuestion.html',
+						templateUrl: '/partials/videoViewer/askQuestionFrame.html',
 						controller: 'AddQuestionCtrl'
 					}
 				}
@@ -53,7 +53,7 @@ duzuroApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
 				url: 'question/:qid',
 				views: {
 					'sideFrame': {
-						templateUrl: '/partials/questionViewer.html',
+						templateUrl: '/partials/videoViewer/questionViewerFrame.html',
 						controller: 'QuestionViewerCtrl'
 					},
 					'bottomFrame': {
@@ -61,12 +61,6 @@ duzuroApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
 					}
 				}
 			});
-	}
-]);
-
-duzuroApp.controller('NavCtrl', ['$scope',
-	function($scope) {
-		$scope.bigVid = false;
 	}
 ]);
 var duzuroServices = angular.module('duzuroServices', [
@@ -88,7 +82,7 @@ duzuroServices.factory('Questions', ['$firebase',
 			},
 
 			add: function(title, details) {
-				fb_questions.$add({
+				return fb_questions.$add({
 					title: title,
 					details: details
 				});
@@ -97,6 +91,7 @@ duzuroServices.factory('Questions', ['$firebase',
 	}
 ]);
 var duzuroVideoViewer = angular.module('duzuroVideoViewer', [
+	'ui.router',
 	'duzuroServices'
 ]);
 
@@ -112,12 +107,31 @@ duzuroApp.controller('QuestionViewerCtrl', ['$scope', '$stateParams', 'Questions
 	}
 ]);
 
-duzuroApp.controller('AddQuestionCtrl', ['$scope', 'Questions',
-	function($scope, Questions) {
+duzuroApp.controller('AddQuestionCtrl', ['$scope', '$state', 'Questions',
+	function($scope, $state, Questions) {
 
+		$scope.questionTitle = "";
+		$scope.questionDetails = "";
 
 		$scope.addQuestion = function() {
-			Questions.add($scope.questionTitle, $scope.questionDetails);
+			if(validateFields()) {
+				Questions.add($scope.questionTitle, $scope.questionDetails).then(function(q) {
+					$state.go('videoViewer.readQuestion', {qid: q.name()});
+				});
+			}
 		};
+
+		$scope.cancelAddQuestion = function() {
+			$state.go('videoViewer');
+		};
+
+		function validateFields() {
+			if ($scope.questionTitle &&
+				$scope.questionDetails) {
+				return true;
+			} else {
+				return false;
+			}
+		}
 	}
 ]);

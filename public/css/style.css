@@ -179,9 +179,6 @@ textarea {
   position: relative;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_frame\.scss}line{font-family:\0000316}}
-#videoFrame.open {
   padding-left: 300px;
   padding-bottom: 300px;
 }
@@ -203,12 +200,8 @@ textarea {
   position: absolute;
   top: 0;
   bottom: 0;
-  left: -300px;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_frame\.scss}line{font-family:\0000343}}
-#sideFrame.open {
   left: 0;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_frame\.scss}line{font-family:\0000347}}
@@ -220,20 +213,16 @@ textarea {
 #bottomFrame {
   height: 300px;
   position: absolute;
-  bottom: -300px;
   left: 0;
   right: 0;
   padding-left: 300px;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
   background-color: #5d5d5d;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_frame\.scss}line{font-family:\0000367}}
-#bottomFrame.open {
   bottom: 0;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_videoViewerFrame\.scss}line{font-family:\000033}}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/videoViewer\/_videoViewerFrame\.scss}line{font-family:\000033}}
 #videoViewerFrame #controlBar {
   width: 100%;
   height: 80px;
@@ -243,24 +232,24 @@ textarea {
   background-color: #121212;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_askQuestionFrame\.scss}line{font-family:\000031}}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/videoViewer\/_askQuestionFrame\.scss}line{font-family:\000031}}
 #askQuestionFrame {
   display: table;
   padding: 10px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_askQuestionFrame\.scss}line{font-family:\000036}}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/videoViewer\/_askQuestionFrame\.scss}line{font-family:\000036}}
 #askQuestionFrame #formTextElements {
   display: table-cell;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_askQuestionFrame\.scss}line{font-family:\000039}}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/videoViewer\/_askQuestionFrame\.scss}line{font-family:\000039}}
 #askQuestionFrame #formTextElements input[type=text] {
   margin-bottom: 8px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_askQuestionFrame\.scss}line{font-family:\0000313}}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/videoViewer\/_askQuestionFrame\.scss}line{font-family:\0000313}}
 #askQuestionFrame #formTextElements textarea {
   height: 100%;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_askQuestionFrame\.scss}line{font-family:\0000319}}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/videoViewer\/_askQuestionFrame\.scss}line{font-family:\0000319}}
 #askQuestionFrame #formButtons {
   width: 120px;
   text-align: center;

@@ -17,7 +17,7 @@ duzuroServices.factory('Questions', ['$firebase',
 			},
 
 			add: function(title, details) {
-				fb_questions.$add({
+				return fb_questions.$add({
 					title: title,
 					details: details
 				});

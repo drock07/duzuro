@@ -121,11 +121,11 @@ module.exports = function(grunt) {
 			livereload: {
 				options: { livereload: true },
 				files: [
-					'./public/css/*.css', 
-					'./public/js/*.js', 
-					'./public/index.html', 
-					'./public/partials/*.html'
-					// './public/*.*'
+					// './public/css/*.css', 
+					// './public/js/*.js', 
+					// './public/index.html', 
+					// './public/partials/**/*.html'
+					'./public/**/*.*'
 				]
 			}
 		},

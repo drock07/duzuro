@@ -1,4 +1,5 @@
 var duzuroVideoViewer = angular.module('duzuroVideoViewer', [
+	'ui.router',
 	'duzuroServices'
 ]);
 
@@ -14,12 +15,31 @@ duzuroApp.controller('QuestionViewerCtrl', ['$scope', '$stateParams', 'Questions
 	}
 ]);
 
-duzuroApp.controller('AddQuestionCtrl', ['$scope', 'Questions',
-	function($scope, Questions) {
+duzuroApp.controller('AddQuestionCtrl', ['$scope', '$state', 'Questions',
+	function($scope, $state, Questions) {
 
+		$scope.questionTitle = "";
+		$scope.questionDetails = "";
 
 		$scope.addQuestion = function() {
-			Questions.add($scope.questionTitle, $scope.questionDetails);
+			if(validateFields()) {
+				Questions.add($scope.questionTitle, $scope.questionDetails).then(function(q) {
+					$state.go('videoViewer.readQuestion', {qid: q.name()});
+				});
+			}
 		};
+
+		$scope.cancelAddQuestion = function() {
+			$state.go('videoViewer');
+		};
+
+		function validateFields() {
+			if ($scope.questionTitle &&
+				$scope.questionDetails) {
+				return true;
+			} else {
+				return false;
+			}
+		}
 	}
 ]);

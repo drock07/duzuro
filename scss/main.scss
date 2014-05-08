@@ -5,6 +5,10 @@
 @import 'globals';
 @import 'frame'; 
 
-@import 'videoViewerFrame';
-@import 'questionsViewerFrame';
-@import 'askQuestionFrame';
+////////////////////////
+// Video Viewer files //
+////////////////////////
+
+@import 'videoViewer/videoViewerFrame';
+@import 'videoViewer/questionsViewerFrame';
+@import 'videoViewer/askQuestionFrame';

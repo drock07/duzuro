@@ -13,10 +13,10 @@
 
 	transition: all 0.5s;
 
-	&.open {
+	// &.open {
 		padding-left: $side-frame-width;
 		padding-bottom: $bottom-frame-height;
-	}
+	// }
 
 	video {
 		width: 100%;
@@ -36,13 +36,13 @@
 	position: absolute;
 	top: 0;
 	bottom: 0;
-	left: -$side-frame-width;
+	// left: -$side-frame-width;
 
 	transition: all 0.5s;
 
-	&.open {
+	// &.open {
 		left: 0;
-	}
+	// }
 
 	& > div {
 		background-color: $gray;
@@ -53,7 +53,7 @@
 	height: $bottom-frame-height;
 
 	position: absolute;
-	bottom: -$bottom-frame-height;
+	// bottom: -$bottom-frame-height;
 	// left: $side-frame-width;
 	left: 0;
 	right: 0;
@@ -64,7 +64,7 @@
 
 	background-color: $gray-dark;
 
-	&.open {
+	// &.open {
 		bottom: 0;
-	}
+	// }
 }

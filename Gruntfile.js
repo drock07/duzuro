@@ -10,7 +10,7 @@ module.exports = function(grunt) {
 					style: 'compressed'
 				},
 				files: {
-					"./public/css/style.css": "./scss/*.scss"
+					"./public/css/style.css": "./scss/main.scss"
 				}
 			}, 
 			dev: {
@@ -46,7 +46,9 @@ module.exports = function(grunt) {
 			},
 			dev: {
 				src: [
-					'./js-pre/app.js'
+					'./js-pre/app.js',
+					'./js-pre/services.js',
+					'./js-pre/videoViewer.js'
 				],
 				dest: './public/js/duzuro.js'
 			},
@@ -69,6 +71,12 @@ module.exports = function(grunt) {
 					'./js-libs/firebase/firebase-simple-login/firebase-simple-login.js'
 				],
 				dest: './public/js/firebase.min.js'
+			},
+			videogular: {
+				src: [
+					'./js-libs/videogular/videogular.min.js'
+				],
+				dest: './public/js/videogular.min.js'
 			}
 		},
 
@@ -96,7 +104,7 @@ module.exports = function(grunt) {
 		watch: {
 			css: {
 				files: ['./scss/*.scss'],
-				tasks: ['sass:dev'],
+				tasks: ['sass:dev', 'autoprefixer'],
 				options: {
 					spawn: true
 					// spawn: false
@@ -163,6 +171,7 @@ module.exports = function(grunt) {
 		'bower:install', 
 		'concat:firebase',
 		'concat:angular', 
-		'concat:jquery'
+		'concat:jquery',
+		'concat:videogular'
 	]);
 };

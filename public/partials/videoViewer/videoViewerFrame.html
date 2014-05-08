@@ -27,6 +27,8 @@
 
 		<button class="play-button" ng-click="playToggle()"><i ng-class="playPauseIcon"></i></button>
 
-		<a ui-sref="videoViewer.askQuestion">Ask Question</a>
+		<span>{{ videoData.currentTime | humanTime }} / {{ videoData.duration | humanTime }}</span>
+
+		<a class="right" ui-sref="videoViewer.askQuestion">Ask Question</a>
 	</div>
 </div>

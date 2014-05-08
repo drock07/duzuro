@@ -2453,6 +2453,16 @@ a {
   display: none;
 }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_globals\.scss}line{font-family:\00003113}}
+.right {
+  float: right;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_globals\.scss}line{font-family:\00003117}}
+.left {
+  float: left;
+}
+
 @media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_frame\.scss}line{font-family:\000031}}
 #mainViewWrapper {
   width: 100%;

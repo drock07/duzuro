@@ -81,7 +81,7 @@ duzuroApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
 				views: {
 					'bottomFrame@videoViewer': {
 						templateUrl: '/partials/videoViewer/readAnswerFrame.html',
-						controller: 'WriteAnswerCtrl'
+						controller: 'ReadAnswerCtrl'
 					}
 				}
 			});
@@ -181,7 +181,17 @@ duzuroVideoViewer.factory('VideoAttributes', [
 			}
 		};
 	}
-]);
+])
+.filter('humanTime', function() {
+	return function(time) {
+		var mm = Math.floor(time / 60);
+		var ss = Math.floor(time - (mm * 60));
+		var mins = mm < 10 ? "0" + mm : mm;
+		var secs = ss < 10 ? "0" + ss : ss;
+
+		return mins + ":" + secs;
+	}
+});
 
 duzuroApp.controller('VideoViewerCtrl', ['$scope', 'VideoAttributes', 'Questions',
 	function($scope, VideoAttributes, Questions) {
@@ -235,12 +245,17 @@ duzuroApp.controller('QuestionsViewerCtrl', ['$scope', 'Questions',
 	}
 ]);
 
-duzuroApp.controller('QuestionViewerCtrl', ['$scope', '$stateParams', 'Questions',
-	function($scope, $stateParams, Questions) {
+duzuroApp.controller('QuestionViewerCtrl', ['$scope', '$stateParams', 'Questions', 'VideoAttributes',
+	function($scope, $stateParams, Questions, VideoAttributes) {
+
 
 		$scope.answers = Questions.getAnswers($stateParams['qid']);
 
 		$scope.question = Questions.get($stateParams['qid']);
+
+		// $scope.$apply(function() {
+			// VideoAttributes.getData().currentTime = $scope.question.time;
+		// });
 	}
 ]);
 

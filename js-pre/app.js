@@ -81,7 +81,7 @@ duzuroApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
 				views: {
 					'bottomFrame@videoViewer': {
 						templateUrl: '/partials/videoViewer/readAnswerFrame.html',
-						controller: 'WriteAnswerCtrl'
+						controller: 'ReadAnswerCtrl'
 					}
 				}
 			});

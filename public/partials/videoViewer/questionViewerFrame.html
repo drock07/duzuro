@@ -1,2 +1,19 @@
-<h1>{{ question.title }}</h1>
-<p>{{ question.details }}</p>
+<div id="questionViewerFrame" class="headed-list">
+	<header>
+		<a ui-sref="videoViewer"><i class="ra-icon-arrow-left"></i> Back</a>
+	</header>
+	<div class="table-row-0 question-title">
+		<h1>{{ question.title }}</h1>
+	</div>
+	<div class="table-row-0 question-details">
+		<p>{{ question.details }}</p>
+	</div>
+	<div class="list-wrapper">
+		<div class="list">
+			<div class="answer" ng-repeat="(aid, answer) in answers">
+				<a ui-sref="videoViewer.readQuestion({aid: aid})">{{ answer.title }} <br /> {{ answer.humanTime }}</a>
+			</div>
+			<div class="answer"><a ui-sref=".writeAnswer"><i class="ra-icon-plus"></i> Add answer</a></div>
+		</div>
+	</div>
+</div>

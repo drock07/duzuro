@@ -22,9 +22,10 @@
 	<div id="controlBar">
 		<div class="scrubber" ng-click="onScrubberClick($event)">
 			<div class="currentProgress" ng-style="{'width': videoData.percent}"></div>
+			<div ng-repeat="question in questions" class="question-marker" ng-style="calculateQMarkerPosition(question.time)"></div>
 		</div>
 
-		<button class="play-button" ng-click="playToggle()">&gt;</button>
+		<button class="play-button" ng-click="playToggle()"><i ng-class="playPauseIcon"></i></button>
 
 		<a ui-sref="videoViewer.askQuestion">Ask Question</a>
 	</div>

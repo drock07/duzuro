@@ -13,5 +13,13 @@
 	<script type="text/javascript" src="/js/videogular.min.js"></script>
 	<script type="text/javascript" src="/js/jquery.min.js"></script>
 	<script type="text/javascript" src="/js/duzuro.js"></script>
+
+	<script type="text/javascript">
+		window.onerror = function (errorMsg, url, lineNumber, columnNumber, errorObject) {
+		    if (errorObject && /<omitted>/.test(errorMsg)) {
+		        console.error('Full exception message: ' + errorObject.message);
+		    }
+		}
+	</script>
 </body>
 </html>

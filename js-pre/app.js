@@ -43,10 +43,6 @@ duzuroApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
 					'videoFrame@videoViewer': {
 						templateUrl: '/partials/videoViewer/videoViewerFrame.html',
 						controller: 'VideoViewerCtrl'
-					},
-					'bottomFrame@videoViewer': {
-						template: "{{ butt }}",
-						controller: 'Monkey'
 					}
 				}
 			})
@@ -68,6 +64,15 @@ duzuroApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
 					},
 					'bottomFrame': {
 						template: 'Choose an answer in the sidebar'
+					}
+				}
+			})
+			.state('videoViewer.readQuestion.writeAnswer', {
+				url: '/answer',
+				views: {
+					'bottomFrame': {
+						templateUrl: '/partials/videoViewer/WriteAnswerFrame.html',
+						// controller: 'AddQuestionCtrl'
 					}
 				}
 			});

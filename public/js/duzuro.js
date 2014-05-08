@@ -43,10 +43,6 @@ duzuroApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
 					'videoFrame@videoViewer': {
 						templateUrl: '/partials/videoViewer/videoViewerFrame.html',
 						controller: 'VideoViewerCtrl'
-					},
-					'bottomFrame@videoViewer': {
-						template: "{{ butt }}",
-						controller: 'Monkey'
 					}
 				}
 			})
@@ -70,6 +66,15 @@ duzuroApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
 						template: 'Choose an answer in the sidebar'
 					}
 				}
+			})
+			.state('videoViewer.readQuestion.writeAnswer', {
+				url: '/answer',
+				views: {
+					'bottomFrame': {
+						templateUrl: '/partials/videoViewer/WriteAnswerFrame.html',
+						// controller: 'AddQuestionCtrl'
+					}
+				}
 			});
 	}
 ]);
@@ -79,8 +84,18 @@ var duzuroServices = angular.module('duzuroServices', [
 
 duzuroServices.factory('Questions', ['$firebase',
 	function($firebase) {
-		var fb_base = $firebase(new Firebase("https://duzuro.firebaseio.com/"));
+		var fb = new Firebase("https://duzuro.firebaseio.com/");
+		var fb_base = $firebase(fb);
 		var fb_questions = fb_base.$child('questions');
+
+		function parseTime(time) {
+			var mm = Math.floor(time / 60);
+			var ss = Math.floor(time - (mm * 60));
+			var mins = mm < 10 ? "0" + mm : mm;
+			var secs = ss < 10 ? "0" + ss : ss;
+
+			return {mins: mins, secs: secs};
+		}
 
 		return {
 			getAll: function() {
@@ -91,11 +106,22 @@ duzuroServices.factory('Questions', ['$firebase',
 				return fb_questions.$child(qid);
 			},
 
+			setPriority: function(id, priority) {
+				var question = fb_questions.$child(id);
+				question.$priority = priority;
+				question.$save();
+			},
+
 			add: function(title, details, time) {
+
+				var parsedTime = parseTime(time);
+				var humanTime = parsedTime.mins + ":" + parsedTime.secs;
+
 				return fb_questions.$add({
 					title: title,
 					details: details,
-					time: time
+					time: time,
+					humanTime: humanTime
 				});
 			}
 		};
@@ -132,11 +158,13 @@ duzuroVideoViewer.factory('VideoAttributes', [
 	}
 ]);
 
-duzuroApp.controller('VideoViewerCtrl', ['$scope', 'VideoAttributes',
-	function($scope, VideoAttributes) {
+duzuroApp.controller('VideoViewerCtrl', ['$scope', 'VideoAttributes', 'Questions',
+	function($scope, VideoAttributes, Questions) {
 		var videoElement = $('video')[0];
 
+		$scope.questions = Questions.getAll();
 		$scope.videoData = VideoAttributes.getData();
+		$scope.playPauseIcon = "ra-icon-play3";
 
 		$(videoElement).on('timeupdate', function(event) {
 			VideoAttributes.update(this.currentTime, this.duration);
@@ -146,15 +174,17 @@ duzuroApp.controller('VideoViewerCtrl', ['$scope', 'VideoAttributes',
 		$scope.playToggle = function() {
 			if(videoElement.paused) {
 				videoElement.play();
+				$scope.playPauseIcon = "ra-icon-pause2";
 			} else {
 				videoElement.pause();
+				$scope.playPauseIcon = "ra-icon-play3";
 			}
 		};
 
 		$scope.onScrubberClick = function(event) {
 			var scrubber = $(".scrubber");
 
-			var fraction = event.offsetX / scrubber.width();
+			var fraction = (event.clientX - scrubber.offset().left) / scrubber.width();
 			var percent = fraction * 100;
 
 			var toTime = videoElement.duration * fraction;
@@ -163,12 +193,14 @@ duzuroApp.controller('VideoViewerCtrl', ['$scope', 'VideoAttributes',
 
 			$scope.curPercent = percent + "%";
 		};
-	}
-]);
 
-duzuroApp.controller('Monkey', ['$scope', 'VideoAttributes',
-	function($scope, VideoAttributes) {
-		$scope.butt = VideoAttributes.getData();
+		$scope.calculateQMarkerPosition = function(qTime) {
+			var fraction = qTime / $scope.videoData.duration;
+
+			var left = $(".scrubber").width() * fraction;
+			
+			return {left: left + "px"};
+		};
 	}
 ]);
 
@@ -192,8 +224,14 @@ duzuroApp.controller('AddQuestionCtrl', ['$scope', '$state', 'Questions', 'Video
 
 		$scope.addQuestion = function() {
 			if(validateFields()) {
-				Questions.add($scope.questionTitle, $scope.questionDetails, VideoAttributes.data.currentTime).then(function(q) {
-					$state.go('videoViewer.readQuestion', {qid: q.name()});
+				var qTime = VideoAttributes.data.currentTime
+
+				Questions.add($scope.questionTitle, $scope.questionDetails, qTime).then(function(q) {
+					
+					Questions.setPriority(q.name(), qTime);
+
+					$state.go('videoViewer');
+					// $state.go('videoViewer.readQuestion', {qid: q.name()});
 				});
 			}
 		};

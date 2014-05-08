@@ -4,8 +4,18 @@ var duzuroServices = angular.module('duzuroServices', [
 
 duzuroServices.factory('Questions', ['$firebase',
 	function($firebase) {
-		var fb_base = $firebase(new Firebase("https://duzuro.firebaseio.com/"));
+		var fb = new Firebase("https://duzuro.firebaseio.com/");
+		var fb_base = $firebase(fb);
 		var fb_questions = fb_base.$child('questions');
+
+		function parseTime(time) {
+			var mm = Math.floor(time / 60);
+			var ss = Math.floor(time - (mm * 60));
+			var mins = mm < 10 ? "0" + mm : mm;
+			var secs = ss < 10 ? "0" + ss : ss;
+
+			return {mins: mins, secs: secs};
+		}
 
 		return {
 			getAll: function() {
@@ -16,11 +26,22 @@ duzuroServices.factory('Questions', ['$firebase',
 				return fb_questions.$child(qid);
 			},
 
+			setPriority: function(id, priority) {
+				var question = fb_questions.$child(id);
+				question.$priority = priority;
+				question.$save();
+			},
+
 			add: function(title, details, time) {
+
+				var parsedTime = parseTime(time);
+				var humanTime = parsedTime.mins + ":" + parsedTime.secs;
+
 				return fb_questions.$add({
 					title: title,
 					details: details,
-					time: time
+					time: time,
+					humanTime: humanTime
 				});
 			}
 		};

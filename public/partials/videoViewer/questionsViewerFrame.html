@@ -1,9 +1,12 @@
-<div id="questionTitleContainer">
-	<h1>Questions</h1>
-</div>
-<div id="questionsContainer">
-	<div id="questionElement" ng-repeat="(qid, question) in questions">
-		<a ui-sref="videoViewer.readQuestion({qid: qid})">{{ question.title }}</a>
-		{{ question.time }}
+<div id="questionsViewerFrame" class="headed-list">
+	<header>
+		<h1>Questions</h1>
+	</header>
+	<div class="list-wrapper">
+		<div class="list">
+			<div class="question" ng-repeat="question in questions | orderByPriority">
+				<a ui-sref="videoViewer.readQuestion({qid: question.$id})">{{ question.title }} <br /> {{ question.humanTime }}</a>
+			</div>
+		</div>
 	</div>
 </div>

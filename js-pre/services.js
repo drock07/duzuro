@@ -16,10 +16,11 @@ duzuroServices.factory('Questions', ['$firebase',
 				return fb_questions.$child(qid);
 			},
 
-			add: function(title, details) {
+			add: function(title, details, time) {
 				return fb_questions.$add({
 					title: title,
-					details: details
+					details: details,
+					time: time
 				});
 			}
 		};

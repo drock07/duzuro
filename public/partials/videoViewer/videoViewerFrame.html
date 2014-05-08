@@ -1,11 +1,31 @@
 <div class="fill-space" id="videoViewerFrame">
-	<div videogular vg-autoplay="true">	
+	<!-- <videogular vg-theme="'/css/videogular.css'" vg-responsive="false" vg-stretch="'fit'">	
 		<video>
 			<source src="/videos/regex.mp4" type="video/mp4">
 			Your browser does not support the video tag.
 		</video>
-	</div>
+		<vg-controls vg-autohide="false" style="height: 50px;">
+				<vg-play-pause-button vg-play-icon="'A'" vg-pause-icon="&#xe001;"></vg-play-pause-button>
+				<vg-scrubBar>
+		            <vg-scrubbarcurrenttime></vg-scrubbarcurrenttime>
+		        </vg-scrubBar>
+		</vg-controls>
+	</videogular> -->
+	<!-- <div id="controlBar">
+		<a ui-sref="videoViewer.askQuestion">Ask Question</a>
+	</div> -->
+
+	<video ng-click="playToggle()">
+		<source src="/videos/regex.mp4" type="video/mp4">
+		Your browser does not support the video tag.
+	</video>
 	<div id="controlBar">
+		<div class="scrubber" ng-click="onScrubberClick($event)">
+			<div class="currentProgress" ng-style="{'width': videoData.percent}"></div>
+		</div>
+
+		<button class="play-button" ng-click="playToggle()">&gt;</button>
+
 		<a ui-sref="videoViewer.askQuestion">Ask Question</a>
 	</div>
 </div>

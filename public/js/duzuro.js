@@ -4,7 +4,12 @@
 var duzuroApp = angular.module('duzuroApp', [
 	'ui.router',
 	'duzuroServices',
-	'duzuroVideoViewer'
+	'duzuroVideoViewer',
+	'com.2fdevs.videogular',
+	'com.2fdevs.videogular.plugins.controls',
+	'com.2fdevs.videogular.plugins.overlayplay',
+	'com.2fdevs.videogular.plugins.buffering',
+	'com.2fdevs.videogular.plugins.poster'
 ]);
 
 duzuroApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
@@ -36,7 +41,12 @@ duzuroApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
 						controller: 'QuestionsViewerCtrl'
 					},
 					'videoFrame@videoViewer': {
-						templateUrl: '/partials/videoViewer/videoViewerFrame.html'
+						templateUrl: '/partials/videoViewer/videoViewerFrame.html',
+						controller: 'VideoViewerCtrl'
+					},
+					'bottomFrame@videoViewer': {
+						template: "{{ butt }}",
+						controller: 'Monkey'
 					}
 				}
 			})
@@ -81,10 +91,11 @@ duzuroServices.factory('Questions', ['$firebase',
 				return fb_questions.$child(qid);
 			},
 
-			add: function(title, details) {
+			add: function(title, details, time) {
 				return fb_questions.$add({
 					title: title,
-					details: details
+					details: details,
+					time: time
 				});
 			}
 		};
@@ -93,6 +104,72 @@ duzuroServices.factory('Questions', ['$firebase',
 var duzuroVideoViewer = angular.module('duzuroVideoViewer', [
 	'ui.router',
 	'duzuroServices'
+]);
+
+duzuroVideoViewer.factory('VideoAttributes', [
+	function() {
+		var data = {
+			currentTime: 0,
+			duration: 0,
+			fraction: 0,
+			percent: "0%"
+		};
+
+		return {
+			data: data,
+
+			getData: function() {
+				return data;
+			},
+
+			update: function(curTime, dur) {
+				data.currentTime = curTime;
+				data.duration = dur;
+				data.fraction = curTime / dur;
+				data.percent = (data.fraction * 100) + "%";
+			}
+		};
+	}
+]);
+
+duzuroApp.controller('VideoViewerCtrl', ['$scope', 'VideoAttributes',
+	function($scope, VideoAttributes) {
+		var videoElement = $('video')[0];
+
+		$scope.videoData = VideoAttributes.getData();
+
+		$(videoElement).on('timeupdate', function(event) {
+			VideoAttributes.update(this.currentTime, this.duration);
+			$scope.$apply();
+		});
+
+		$scope.playToggle = function() {
+			if(videoElement.paused) {
+				videoElement.play();
+			} else {
+				videoElement.pause();
+			}
+		};
+
+		$scope.onScrubberClick = function(event) {
+			var scrubber = $(".scrubber");
+
+			var fraction = event.offsetX / scrubber.width();
+			var percent = fraction * 100;
+
+			var toTime = videoElement.duration * fraction;
+
+			videoElement.currentTime = toTime;
+
+			$scope.curPercent = percent + "%";
+		};
+	}
+]);
+
+duzuroApp.controller('Monkey', ['$scope', 'VideoAttributes',
+	function($scope, VideoAttributes) {
+		$scope.butt = VideoAttributes.getData();
+	}
 ]);
 
 duzuroApp.controller('QuestionsViewerCtrl', ['$scope', 'Questions',
@@ -107,15 +184,15 @@ duzuroApp.controller('QuestionViewerCtrl', ['$scope', '$stateParams', 'Questions
 	}
 ]);
 
-duzuroApp.controller('AddQuestionCtrl', ['$scope', '$state', 'Questions',
-	function($scope, $state, Questions) {
+duzuroApp.controller('AddQuestionCtrl', ['$scope', '$state', 'Questions', 'VideoAttributes',
+	function($scope, $state, Questions, VideoAttributes) {
 
 		$scope.questionTitle = "";
 		$scope.questionDetails = "";
 
 		$scope.addQuestion = function() {
 			if(validateFields()) {
-				Questions.add($scope.questionTitle, $scope.questionDetails).then(function(q) {
+				Questions.add($scope.questionTitle, $scope.questionDetails, VideoAttributes.data.currentTime).then(function(q) {
 					$state.go('videoViewer.readQuestion', {qid: q.name()});
 				});
 			}

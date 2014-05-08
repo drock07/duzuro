@@ -1,13 +1,48 @@
 #videoViewerFrame {
 
+	padding-bottom: $control-bar-height;
+
+	video {
+		width: 100%;
+		height: 100%;
+	}
+
 	#controlBar {
 		width: 100%;
-		height: 80px;
+		height: $control-bar-height;
+
+		// padding-top: 10px;
 
 		position: absolute;
 		bottom: 0;
 		right: 0;
 
+		color: $white;
 		background-color: $black;
+
+		.scrubber {
+			width: 100%;
+			height: 10px;
+
+			cursor: pointer;
+			background-color: transparentize($white, 0.5);
+
+			.currentProgress {
+				width: 0%;
+				height: 100%;
+
+				background-color: $blue;
+			}
+		}
+
+		.play-button {
+			min-width: initial;
+			padding: 5px 15px;
+
+
+			border-radius: 50%;
+
+			background-color: $gray;
+		}
 	}
 }

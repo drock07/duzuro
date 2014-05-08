@@ -4,5 +4,6 @@
 <div id="questionsContainer">
 	<div id="questionElement" ng-repeat="(qid, question) in questions">
 		<a ui-sref="videoViewer.readQuestion({qid: qid})">{{ question.title }}</a>
+		{{ question.time }}
 	</div>
 </div>

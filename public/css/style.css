@@ -1,11 +1,11 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
 /* Colors */
 /* Site measurements */
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
 */
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kduvvuru\/duzuro\/scss\/_reset\.scss}line{font-family:\000036}}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_reset\.scss}line{font-family:\0000318}}
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -28,54 +28,54 @@ time, mark, audio, video {
 }
 
 /* HTML5 display-role reset for older browsers */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kduvvuru\/duzuro\/scss\/_reset\.scss}line{font-family:\0000327}}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_reset\.scss}line{font-family:\0000328}}
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
   display: block;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kduvvuru\/duzuro\/scss\/_reset\.scss}line{font-family:\0000331}}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_reset\.scss}line{font-family:\0000331}}
 body {
   line-height: 1;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kduvvuru\/duzuro\/scss\/_reset\.scss}line{font-family:\0000334}}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_reset\.scss}line{font-family:\0000334}}
 ol, ul {
   list-style: none;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kduvvuru\/duzuro\/scss\/_reset\.scss}line{font-family:\0000337}}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_reset\.scss}line{font-family:\0000337}}
 blockquote, q {
   quotes: none;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kduvvuru\/duzuro\/scss\/_reset\.scss}line{font-family:\0000340}}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_reset\.scss}line{font-family:\0000341}}
 blockquote:before, blockquote:after,
 q:before, q:after {
   content: '';
   content: none;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kduvvuru\/duzuro\/scss\/_reset\.scss}line{font-family:\0000345}}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_reset\.scss}line{font-family:\0000345}}
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kduvvuru\/duzuro\/scss\/_globals\.scss}line{font-family:\000031}}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_globals\.scss}line{font-family:\000031}}
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kduvvuru\/duzuro\/scss\/_globals\.scss}line{font-family:\000035}}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_globals\.scss}line{font-family:\000035}}
 html, body {
   width: 100%;
   height: 100%;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kduvvuru\/duzuro\/scss\/_globals\.scss}line{font-family:\0000310}}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_globals\.scss}line{font-family:\0000310}}
 body {
   position: relative;
   overflow: hidden;
@@ -83,7 +83,7 @@ body {
   font-size: 22px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kduvvuru\/duzuro\/scss\/_globals\.scss}line{font-family:\0000318}}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_globals\.scss}line{font-family:\0000318}}
 button {
   min-width: 100px;
   cursor: pointer;
@@ -95,29 +95,29 @@ button {
   font-size: 22px;
   font-weight: bold;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kduvvuru\/duzuro\/scss\/_globals\.scss}line{font-family:\0000331}}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_globals\.scss}line{font-family:\0000331}}
 button:hover {
   background-color: white;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kduvvuru\/duzuro\/scss\/_globals\.scss}line{font-family:\0000335}}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_globals\.scss}line{font-family:\0000335}}
 button:active {
   background-color: #eeeeee;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kduvvuru\/duzuro\/scss\/_globals\.scss}line{font-family:\0000339}}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_globals\.scss}line{font-family:\0000339}}
 button.blue {
   background-color: #11609f;
   color: #eeeeee;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kduvvuru\/duzuro\/scss\/_globals\.scss}line{font-family:\0000343}}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_globals\.scss}line{font-family:\0000343}}
 button.blue:hover {
   background-color: #167ccd;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kduvvuru\/duzuro\/scss\/_globals\.scss}line{font-family:\0000347}}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_globals\.scss}line{font-family:\0000347}}
 button.blue:active {
   background-color: #11609f;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kduvvuru\/duzuro\/scss\/_globals\.scss}line{font-family:\0000353}}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_globals\.scss}line{font-family:\0000353}}
 input[type=text] {
   width: 100%;
   padding: 8px 12px;
@@ -127,7 +127,7 @@ input[type=text] {
   font-size: 22px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kduvvuru\/duzuro\/scss\/_globals\.scss}line{font-family:\0000364}}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_globals\.scss}line{font-family:\0000364}}
 textarea {
   width: 100%;
   padding: 8px;
@@ -138,63 +138,58 @@ textarea {
   font-size: 22px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kduvvuru\/duzuro\/scss\/_globals\.scss}line{font-family:\0000381}}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_globals\.scss}line{font-family:\0000381}}
 .fill-space {
   width: 100%;
   height: 100%;
   position: relative;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kduvvuru\/duzuro\/scss\/_globals\.scss}line{font-family:\0000387}}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_globals\.scss}line{font-family:\0000387}}
 .table {
   display: table;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kduvvuru\/duzuro\/scss\/_globals\.scss}line{font-family:\0000391}}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_globals\.scss}line{font-family:\0000391}}
 .table-row {
   display: table-row;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kduvvuru\/duzuro\/scss\/_globals\.scss}line{font-family:\0000395}}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_globals\.scss}line{font-family:\0000395}}
 .table-row-0 {
   display: table-row;
   height: 0;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kduvvuru\/duzuro\/scss\/_globals\.scss}line{font-family:\00003100}}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_globals\.scss}line{font-family:\00003100}}
 .table-col {
   display: table-cell;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kduvvuru\/duzuro\/scss\/_frame\.scss}line{font-family:\000031}}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_globals\.scss}line{font-family:\00003104}}
+.hide {
+  display: none;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_frame\.scss}line{font-family:\000031}}
 #mainViewWrapper {
   width: 100%;
   height: 100%;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kduvvuru\/duzuro\/scss\/_frame\.scss}line{font-family:\000036}}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_frame\.scss}line{font-family:\000036}}
 #videoFrame {
   width: 100%;
   height: 100%;
   position: relative;
+  background-color: #5d5d5d;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
   padding-left: 300px;
   padding-bottom: 300px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kduvvuru\/duzuro\/scss\/_frame\.scss}line{font-family:\0000321}}
-#videoFrame video {
-  width: 100%;
-  height: 100%;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kduvvuru\/duzuro\/scss\/_frame\.scss}line{font-family:\0000326}}
-#videoFrame .control-bar {
-  position: absolute;
-  top: 0;
-  right: 0;
-}
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kduvvuru\/duzuro\/scss\/_frame\.scss}line{font-family:\0000333}}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_frame\.scss}line{font-family:\0000322}}
 #sideFrame {
   width: 300px;
   position: absolute;
@@ -204,12 +199,12 @@ textarea {
   transition: all 0.5s;
   left: 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kduvvuru\/duzuro\/scss\/_frame\.scss}line{font-family:\0000347}}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_frame\.scss}line{font-family:\0000336}}
 #sideFrame > div {
   background-color: #a2a2a2;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kduvvuru\/duzuro\/scss\/_frame\.scss}line{font-family:\0000352}}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_frame\.scss}line{font-family:\0000341}}
 #bottomFrame {
   height: 300px;
   position: absolute;
@@ -222,17 +217,47 @@ textarea {
   bottom: 0;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kduvvuru\/duzuro\/scss\/videoViewer\/_videoViewerFrame\.scss}line{font-family:\000033}}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/videoViewer\/_videoViewerFrame\.scss}line{font-family:\000031}}
+#videoViewerFrame {
+  padding-bottom: 60px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/videoViewer\/_videoViewerFrame\.scss}line{font-family:\000035}}
+#videoViewerFrame video {
+  width: 100%;
+  height: 100%;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/videoViewer\/_videoViewerFrame\.scss}line{font-family:\0000310}}
 #videoViewerFrame #controlBar {
   width: 100%;
-  height: 80px;
+  height: 60px;
   position: absolute;
   bottom: 0;
   right: 0;
+  color: #eeeeee;
   background-color: #121212;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/videoViewer\/_videoViewerFrame\.scss}line{font-family:\0000323}}
+#videoViewerFrame #controlBar .scrubber {
+  width: 100%;
+  height: 10px;
+  cursor: pointer;
+  background-color: rgba(238, 238, 238, 0.5);
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/videoViewer\/_videoViewerFrame\.scss}line{font-family:\0000330}}
+#videoViewerFrame #controlBar .scrubber .currentProgress {
+  width: 0%;
+  height: 100%;
+  background-color: #11609f;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/videoViewer\/_videoViewerFrame\.scss}line{font-family:\0000338}}
+#videoViewerFrame #controlBar .play-button {
+  min-width: initial;
+  padding: 5px 15px;
+  border-radius: 50%;
+  background-color: #a2a2a2;
+}
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kduvvuru\/duzuro\/scss\/videoViewer\/_questionsViewerFrame\.scss}line{font-family:\000032}}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/videoViewer\/_questionsViewerFrame\.scss}line{font-family:\000032}}
 #sideFrame div #questionTitleContainer {
   width: 100%;
   height: 100px;
@@ -240,7 +265,7 @@ textarea {
   background-color: #11609f;
   margin-bottom: 20px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kduvvuru\/duzuro\/scss\/videoViewer\/_questionsViewerFrame\.scss}line{font-family:\0000310}}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/videoViewer\/_questionsViewerFrame\.scss}line{font-family:\0000310}}
 #sideFrame div #questionTitleContainer h1 {
   text-align: center;
   color: #eeeeee;
@@ -248,7 +273,7 @@ textarea {
   font-size: 47px;
   font-weight: bold;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kduvvuru\/duzuro\/scss\/videoViewer\/_questionsViewerFrame\.scss}line{font-family:\0000318}}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/videoViewer\/_questionsViewerFrame\.scss}line{font-family:\0000318}}
 #sideFrame div #questionsContainer {
   padding-left: 10px;
   padding-right: 10px;
@@ -257,7 +282,7 @@ textarea {
   position: relative;
   overflow-y: scroll;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kduvvuru\/duzuro\/scss\/videoViewer\/_questionsViewerFrame\.scss}line{font-family:\0000327}}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/videoViewer\/_questionsViewerFrame\.scss}line{font-family:\0000327}}
 #sideFrame div #questionsContainer #questionElement {
   width: 100%;
   height: 100px;
@@ -266,29 +291,29 @@ textarea {
   border-radius: 13px;
   padding: 20px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kduvvuru\/duzuro\/scss\/videoViewer\/_questionsViewerFrame\.scss}line{font-family:\0000337}}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/videoViewer\/_questionsViewerFrame\.scss}line{font-family:\0000337}}
 #sideFrame div #questionsContainer #questionElement a {
   text-align: center;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kduvvuru\/duzuro\/scss\/videoViewer\/_askQuestionFrame\.scss}line{font-family:\000031}}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/videoViewer\/_askQuestionFrame\.scss}line{font-family:\000031}}
 #askQuestionFrame {
   display: table;
   padding: 10px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kduvvuru\/duzuro\/scss\/videoViewer\/_askQuestionFrame\.scss}line{font-family:\000036}}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/videoViewer\/_askQuestionFrame\.scss}line{font-family:\000036}}
 #askQuestionFrame #formTextElements {
   display: table-cell;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kduvvuru\/duzuro\/scss\/videoViewer\/_askQuestionFrame\.scss}line{font-family:\000039}}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/videoViewer\/_askQuestionFrame\.scss}line{font-family:\000039}}
 #askQuestionFrame #formTextElements input[type=text] {
   margin-bottom: 8px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kduvvuru\/duzuro\/scss\/videoViewer\/_askQuestionFrame\.scss}line{font-family:\0000313}}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/videoViewer\/_askQuestionFrame\.scss}line{font-family:\0000313}}
 #askQuestionFrame #formTextElements textarea {
   height: 100%;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/kduvvuru\/duzuro\/scss\/videoViewer\/_askQuestionFrame\.scss}line{font-family:\0000319}}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/videoViewer\/_askQuestionFrame\.scss}line{font-family:\0000319}}
 #askQuestionFrame #formButtons {
   width: 120px;
   text-align: center;

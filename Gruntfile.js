@@ -57,7 +57,8 @@ module.exports = function(grunt) {
 					'./js-libs/ng/angular/*.js', 
 					'./js-libs/ng/angular-ui-router/*.js',
 					'./js-libs/ng/angular-animate/*.js',
-					'./js-libs/ng/angularfire/angularfire.min.js'
+					'./js-libs/ng/angularfire/angularfire.min.js',
+					'./js-libs/ng/angular-sanitize/angular-sanitize.min.js'
 				],
 				dest: './public/js/angular.min.js'
 			},
@@ -74,7 +75,12 @@ module.exports = function(grunt) {
 			},
 			videogular: {
 				src: [
-					'./js-libs/videogular/videogular.min.js'
+					'./js-libs/videogular/videogular/videogular.js',
+					'./js-libs/videogular/videogular-controls/controls.min.js',
+					'./js-libs/videogular/videogular-buffering/buffering.min.js',
+					'./js-libs/videogular/videogular-overlay-play/overlay-play.min.js',
+					'./js-libs/videogular/videogular-poster/poster.min.js'
+
 				],
 				dest: './public/js/videogular.min.js'
 			}

@@ -9,7 +9,7 @@
 
 	position: relative;
 
-	// background-color: $gray-dark;
+	background-color: $gray-dark;
 
 	transition: all 0.5s;
 
@@ -17,17 +17,6 @@
 		padding-left: $side-frame-width;
 		padding-bottom: $bottom-frame-height;
 	// }
-
-	video {
-		width: 100%;
-		height: 100%;
-	}
-
-	.control-bar {
-		position: absolute;
-		top: 0;
-		right: 0;
-	}
 }
 
 #sideFrame {

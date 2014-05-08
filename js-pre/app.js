@@ -4,7 +4,12 @@
 var duzuroApp = angular.module('duzuroApp', [
 	'ui.router',
 	'duzuroServices',
-	'duzuroVideoViewer'
+	'duzuroVideoViewer',
+	'com.2fdevs.videogular',
+	'com.2fdevs.videogular.plugins.controls',
+	'com.2fdevs.videogular.plugins.overlayplay',
+	'com.2fdevs.videogular.plugins.buffering',
+	'com.2fdevs.videogular.plugins.poster'
 ]);
 
 duzuroApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
@@ -36,7 +41,12 @@ duzuroApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
 						controller: 'QuestionsViewerCtrl'
 					},
 					'videoFrame@videoViewer': {
-						templateUrl: '/partials/videoViewer/videoViewerFrame.html'
+						templateUrl: '/partials/videoViewer/videoViewerFrame.html',
+						controller: 'VideoViewerCtrl'
+					},
+					'bottomFrame@videoViewer': {
+						template: "{{ butt }}",
+						controller: 'Monkey'
 					}
 				}
 			})

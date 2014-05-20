@@ -3,13 +3,7 @@
 
 var duzuroApp = angular.module('duzuroApp', [
 	'ui.router',
-	'duzuroServices',
-	'duzuroVideoViewer',
-	'com.2fdevs.videogular',
-	'com.2fdevs.videogular.plugins.controls',
-	'com.2fdevs.videogular.plugins.overlayplay',
-	'com.2fdevs.videogular.plugins.buffering',
-	'com.2fdevs.videogular.plugins.poster'
+	'duzuroServices'
 ]);
 
 duzuroApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
@@ -20,71 +14,48 @@ duzuroApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
 
 		$stateProvider
 			// login states
-			// .state('login', {
+			.state('login', {
+				url: '/login',
+				templateUrl: '/partials/login.html',
+				controller: ['$scope', '$state', 'Authentication', 
+					function($scope, $state, Authentication) {
 
-			// })
+						$scope.onGoogleClick = function() {
+							Authentication.googleLogin().then(function(user) {
+								$state.go('project');
+							}, function(error) {
 
-			// video chooser states
-			// .state('videoChooser', {
+							});
+						}
+					}
+				]
+			})
 
-			// })
-			
-			// video viewer states
-			.state('videoViewer', {
+			// milestones - timeline view (fullscreen)
+
+			.state('project', {
 				url: '/',
-				views: {
-					'@' : {
-						templateUrl: '/partials/videoViewer/videoViewerBase.html'
-					},
-					'sideFrame@videoViewer': {
-						templateUrl: '/partials/videoViewer/questionsViewerFrame.html',
-						controller: 'QuestionsViewerCtrl'
-					},
-					'videoFrame@videoViewer': {
-						templateUrl: '/partials/videoViewer/videoViewerFrame.html',
-						controller: 'VideoViewerCtrl'
-					}
-				}
+				templateUrl: '/partials/project-timeline.html'
 			})
-			.state('videoViewer.askQuestion', {
-				url: 'ask',
-				views: {
-					'bottomFrame': {
-						templateUrl: '/partials/videoViewer/askQuestionFrame.html',
-						controller: 'AddQuestionCtrl'
-					}
-				}
-			})
-			.state('videoViewer.readQuestion', {
-				url: 'question/:qid',
-				views: {
-					'sideFrame': {
-						templateUrl: '/partials/videoViewer/questionViewerFrame.html',
-						controller: 'QuestionViewerCtrl'
-					},
-					'bottomFrame': {
-						template: 'Choose an answer in the sidebar'
-					}
-				}
-			})
-			.state('videoViewer.readQuestion.writeAnswer', {
-				url: '/answer',
-				views: {
-					'bottomFrame@videoViewer': {
-						templateUrl: '/partials/videoViewer/writeAnswerFrame.html',
-						controller: 'WriteAnswerCtrl'
-					}
-				}
-			})
-			.state('videoViewer.readQuestion.readAnswer', {
-				url: '/answer/:aid',
-				views: {
-					'bottomFrame@videoViewer': {
-						templateUrl: '/partials/videoViewer/readAnswerFrame.html',
-						controller: 'ReadAnswerCtrl'
-					}
-				}
+
+			.state('project.milestone', {
+				url: 'milestone/:milestoneId',
+				templateUrl: '/partials/milestone.html'
 			});
+	}
+]);
+
+duzuroApp.run(['$rootScope', '$state', 'Authentication',
+	function($rootScope, $state, Authentication) {
+
+		$rootScope.$on('$stateChangeStart', function(event, to, toParams, from, fromParams) {
+
+			// if(to.name !== 'login' && Authentication.currentUser() === null) {
+			// 	// console.log('here');
+			// 	event.preventDefault();
+			// 	$state.go('login');
+			// }
+		});
 	}
 ]);
 var duzuroServices = angular.module('duzuroServices', [
@@ -95,7 +66,8 @@ duzuroServices.factory('Questions', ['$firebase',
 	function($firebase) {
 		var fb = new Firebase("https://duzuro.firebaseio.com/");
 		var fb_base = $firebase(fb);
-		var fb_questions = fb_base.$child('questions');
+		var fb_projects = fb_base.$child('projects');
+		// var fb_questions = fb_base.$child('questions');
 
 		function parseTime(time) {
 			var mm = Math.floor(time / 60);
@@ -107,46 +79,47 @@ duzuroServices.factory('Questions', ['$firebase',
 		}
 
 		return {
-			getAll: function() {
-				return fb_questions;
+			getMilestones: function() {
+				return fb_projects.$child('testProject');
 			},
 
-			get: function(qid) {
-				return fb_questions.$child(qid);
+			getMilestone: function() {
+
 			},
 
-			getAnswers: function(qid) {
-				return fb_questions.$child(qid + "/answers");
+			saveChat: function() {
+
 			},
 
-			getAnswer: function(qid, aid) {
-				return fb_questions.$child(qid + "/answers/" + aid);
+			setUserStatus: function() {
+
 			},
 
-			setPriority: function(id, priority) {
-				var question = fb_questions.$child(id);
-				question.$priority = priority;
-				question.$save();
+			savePinnedPost: function() {
+
+			}
+		};
+	}
+]);
+
+duzuroServices.factory('Authentication', ['$firebaseSimpleLogin',
+	function($firebaseSimpleLogin) {
+		var loginObject = $firebaseSimpleLogin(new Firebase("https://duzuro.firebaseio.com/"));
+
+		return {
+			currentUser: function() {
+				if(!loginObject.user)
+					return null;
+				return {
+					name: loginObject.user.displayName,
+					id: loginObject.user.uid,
+					photo_url: loginObject.user.thirdPartyUserData.picture,
+					photo_url_small: loginObject.user.thirdPartyUserData.picture + "?sz=50"
+				};
 			},
-
-			add: function(title, details, time) {
-
-				var parsedTime = parseTime(time);
-				var humanTime = parsedTime.mins + ":" + parsedTime.secs;
-
-				return fb_questions.$add({
-					title: title,
-					details: details,
-					time: time,
-					humanTime: humanTime
-				});
-			},
-
-			addAnswer: function(id, username, answer) {
-				var question = fb_questions.$child(id + "/answers");
-				question.$add({
-					username: username,
-					answer: answer
+			googleLogin: function() {
+				return loginObject.$login('google', {
+					rememberMe: true
 				});
 			}
 		};
@@ -181,8 +154,9 @@ duzuroVideoViewer.factory('VideoAttributes', [
 			}
 		};
 	}
-])
-.filter('humanTime', function() {
+]);
+
+duzuroVideoViewer.filter('humanTime', function() {
 	return function(time) {
 		var mm = Math.floor(time / 60);
 		var ss = Math.floor(time - (mm * 60));

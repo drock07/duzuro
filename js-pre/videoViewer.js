@@ -27,8 +27,9 @@ duzuroVideoViewer.factory('VideoAttributes', [
 			}
 		};
 	}
-])
-.filter('humanTime', function() {
+]);
+
+duzuroVideoViewer.filter('humanTime', function() {
 	return function(time) {
 		var mm = Math.floor(time / 60);
 		var ss = Math.floor(time - (mm * 60));

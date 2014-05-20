@@ -6,7 +6,8 @@ duzuroServices.factory('Questions', ['$firebase',
 	function($firebase) {
 		var fb = new Firebase("https://duzuro.firebaseio.com/");
 		var fb_base = $firebase(fb);
-		var fb_questions = fb_base.$child('questions');
+		var fb_projects = fb_base.$child('projects');
+		// var fb_questions = fb_base.$child('questions');
 
 		function parseTime(time) {
 			var mm = Math.floor(time / 60);
@@ -18,46 +19,47 @@ duzuroServices.factory('Questions', ['$firebase',
 		}
 
 		return {
-			getAll: function() {
-				return fb_questions;
+			getMilestones: function() {
+				return fb_projects.$child('testProject');
 			},
 
-			get: function(qid) {
-				return fb_questions.$child(qid);
+			getMilestone: function() {
+
 			},
 
-			getAnswers: function(qid) {
-				return fb_questions.$child(qid + "/answers");
+			saveChat: function() {
+
 			},
 
-			getAnswer: function(qid, aid) {
-				return fb_questions.$child(qid + "/answers/" + aid);
+			setUserStatus: function() {
+
 			},
 
-			setPriority: function(id, priority) {
-				var question = fb_questions.$child(id);
-				question.$priority = priority;
-				question.$save();
+			savePinnedPost: function() {
+
+			}
+		};
+	}
+]);
+
+duzuroServices.factory('Authentication', ['$firebaseSimpleLogin',
+	function($firebaseSimpleLogin) {
+		var loginObject = $firebaseSimpleLogin(new Firebase("https://duzuro.firebaseio.com/"));
+
+		return {
+			currentUser: function() {
+				if(!loginObject.user)
+					return null;
+				return {
+					name: loginObject.user.displayName,
+					id: loginObject.user.uid,
+					photo_url: loginObject.user.thirdPartyUserData.picture,
+					photo_url_small: loginObject.user.thirdPartyUserData.picture + "?sz=50"
+				};
 			},
-
-			add: function(title, details, time) {
-
-				var parsedTime = parseTime(time);
-				var humanTime = parsedTime.mins + ":" + parsedTime.secs;
-
-				return fb_questions.$add({
-					title: title,
-					details: details,
-					time: time,
-					humanTime: humanTime
-				});
-			},
-
-			addAnswer: function(id, username, answer) {
-				var question = fb_questions.$child(id + "/answers");
-				question.$add({
-					username: username,
-					answer: answer
+			googleLogin: function() {
+				return loginObject.$login('google', {
+					rememberMe: true
 				});
 			}
 		};

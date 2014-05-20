@@ -4,13 +4,4 @@
 @import 'fonts';
 @import 'globals';
 @import 'frame'; 
-
-////////////////////////
-// Video Viewer files //
-////////////////////////
-
-@import 'videoViewer/videoViewerFrame';
-@import 'videoViewer/questionsViewerFrame';
-@import 'videoViewer/questionViewerFrame';
-@import 'videoViewer/askQuestionFrame';
-@import 'videoViewer/writeAnswerFrame';
+@import 'login';

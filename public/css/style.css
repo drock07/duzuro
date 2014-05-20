@@ -2470,214 +2470,54 @@ a {
 }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_frame\.scss}line{font-family:\000036}}
-#videoFrame {
+#topFrameWrapper {
   width: 100%;
-  height: 100%;
-  position: relative;
-  background-color: #5d5d5d;
-  -webkit-transition: all 0.5s;
-  transition: all 0.5s;
-  padding-left: 300px;
-  padding-bottom: 300px;
+  height: 70%;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_frame\.scss}line{font-family:\0000322}}
-#sideFrame {
-  width: 300px;
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_frame\.scss}line{font-family:\0000312}}
+#bottomFrameWrapper {
+  width: 100%;
+  height: 30%;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_login\.scss}line{font-family:\000031}}
+#loginModalOverlay {
+  width: 100%;
+  height: 100%;
   position: absolute;
   top: 0;
   bottom: 0;
-  -webkit-transition: all 0.5s;
-  transition: all 0.5s;
-  left: 0;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_frame\.scss}line{font-family:\0000336}}
-#sideFrame > div {
-  background-color: #a2a2a2;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_frame\.scss}line{font-family:\0000340}}
-#sideFrame .headed-list {
-  display: table;
-  width: 100%;
-  height: 100%;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_frame\.scss}line{font-family:\0000345}}
-#sideFrame .headed-list header {
-  display: table-row;
-  height: 0;
-  background-color: #11609f;
-  color: #eeeeee;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_frame\.scss}line{font-family:\0000352}}
-#sideFrame .headed-list header h1 {
-  text-align: center;
-  font-size: 44px;
-  padding: 15px;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_frame\.scss}line{font-family:\0000358}}
-#sideFrame .headed-list header a {
-  display: block;
-  font-size: 26.4px;
-  padding: 10px;
-  text-decoration: none;
-  color: #eeeeee;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_frame\.scss}line{font-family:\0000367}}
-#sideFrame .headed-list .list-wrapper {
-  display: table-row;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_frame\.scss}line{font-family:\0000370}}
-#sideFrame .headed-list .list-wrapper .list {
-  width: 100%;
-  height: 100%;
-  overflow-y: auto;
-}
-
-@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_frame\.scss}line{font-family:\0000379}}
-#bottomFrame {
-  height: 300px;
-  position: absolute;
   left: 0;
   right: 0;
-  padding-left: 300px;
-  -webkit-transition: all 0.5s;
-  transition: all 0.5s;
-  background-color: #5d5d5d;
-  bottom: 0;
+  background-color: rgba(18, 18, 18, 0.7);
 }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/videoViewer\/_videoViewerFrame\.scss}line{font-family:\000031}}
-#videoViewerFrame {
-  padding-bottom: 60px;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/videoViewer\/_videoViewerFrame\.scss}line{font-family:\000035}}
-#videoViewerFrame video {
-  width: 100%;
-  height: 100%;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/videoViewer\/_videoViewerFrame\.scss}line{font-family:\0000310}}
-#videoViewerFrame #controlBar {
-  width: 100%;
-  height: 60px;
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_login\.scss}line{font-family:\0000313}}
+#loginModalOverlay .modal {
   position: absolute;
-  bottom: 0;
-  right: 0;
-  color: #eeeeee;
-  background-color: #121212;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/videoViewer\/_videoViewerFrame\.scss}line{font-family:\0000323}}
-#videoViewerFrame #controlBar .scrubber {
-  width: 100%;
-  height: 10px;
-  position: relative;
-  cursor: pointer;
-  background-color: rgba(238, 238, 238, 0.5);
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/videoViewer\/_videoViewerFrame\.scss}line{font-family:\0000332}}
-#videoViewerFrame #controlBar .scrubber .currentProgress {
-  width: 0%;
-  height: 100%;
-  background-color: #11609f;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/videoViewer\/_videoViewerFrame\.scss}line{font-family:\0000339}}
-#videoViewerFrame #controlBar .scrubber .question-marker {
-  width: 5px;
-  height: 15px;
-  position: absolute;
-  top: 0;
-  background-color: #eeeeee;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/videoViewer\/_videoViewerFrame\.scss}line{font-family:\0000350}}
-#videoViewerFrame #controlBar .play-button {
-  min-width: initial;
-  padding: 5px 10px;
-  border-radius: 50%;
-  background-color: #a2a2a2;
-}
-
-@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/videoViewer\/_questionsViewerFrame\.scss}line{font-family:\000033}}
-#questionsViewerFrame .question {
-  width: 100%;
-  height: 100px;
-  padding: 0px 10px;
-  margin: 10px 0px;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/videoViewer\/_questionsViewerFrame\.scss}line{font-family:\0000310}}
-#questionsViewerFrame .question a {
-  display: block;
-  width: 100%;
-  height: 100%;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
   padding: 15px;
-  border-radius: 12px;
-  background-color: #eeeeee;
-  color: #121212;
-  text-decoration: none;
-}
-
-@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/videoViewer\/_questionViewerFrame\.scss}line{font-family:\000032}}
-#questionViewerFrame .question-title {
   background-color: #eeeeee;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/videoViewer\/_questionViewerFrame\.scss}line{font-family:\000035}}
-#questionViewerFrame .question-title h1 {
-  font-weight: bold;
-  font-size: 28.6px;
-  padding: 15px 8px;
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_login\.scss}line{font-family:\0000327}}
+#loginModalOverlay .modal .google-button {
+  width: 197px;
+  height: 42px;
+  padding: 0;
+  background-color: transparent;
+  background-image: url("/img/Red-signin_Long_base_32dp.png");
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/videoViewer\/_questionViewerFrame\.scss}line{font-family:\0000313}}
-#questionViewerFrame .question-details p {
-  color: #eeeeee;
-  padding: 15px 8px;
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_login\.scss}line{font-family:\0000335}}
+#loginModalOverlay .modal .google-button:hover {
+  background-color: transparent;
+  background-image: url("/img/Red-signin_Long_hover_32dp.png");
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/videoViewer\/_questionViewerFrame\.scss}line{font-family:\0000319}}
-#questionViewerFrame .answer {
-  margin-bottom: 8px;
-  padding: 15px;
-  background-color: #bcbcbc;
-}
-
-@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/videoViewer\/_askQuestionFrame\.scss}line{font-family:\000031}}
-#askQuestionFrame {
-  display: table;
-  padding: 10px;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/videoViewer\/_askQuestionFrame\.scss}line{font-family:\000036}}
-#askQuestionFrame #formTextElements {
-  display: table-cell;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/videoViewer\/_askQuestionFrame\.scss}line{font-family:\000039}}
-#askQuestionFrame #formTextElements input[type=text] {
-  margin-bottom: 8px;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/videoViewer\/_askQuestionFrame\.scss}line{font-family:\0000313}}
-#askQuestionFrame #formTextElements textarea {
-  height: 100%;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/videoViewer\/_askQuestionFrame\.scss}line{font-family:\0000319}}
-#askQuestionFrame #formButtons {
-  width: 120px;
-  text-align: center;
-}
-
-@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/videoViewer\/_writeAnswerFrame\.scss}line{font-family:\000031}}
-#writeAnswerFrame {
-  display: table;
-  padding: 10px;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/videoViewer\/_writeAnswerFrame\.scss}line{font-family:\000036}}
-#writeAnswerFrame #formTextElements {
-  display: table-cell;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/videoViewer\/_writeAnswerFrame\.scss}line{font-family:\000039}}
-#writeAnswerFrame #formTextElements input[type=text] {
-  margin-bottom: 8px;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/videoViewer\/_writeAnswerFrame\.scss}line{font-family:\0000313}}
-#writeAnswerFrame #formTextElements textarea {
-  height: 100%;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/videoViewer\/_writeAnswerFrame\.scss}line{font-family:\0000319}}
-#writeAnswerFrame #formButtons {
-  width: 120px;
-  text-align: center;
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_login\.scss}line{font-family:\0000340}}
+#loginModalOverlay .modal .google-button:active {
+  background-color: transparent;
+  background-image: url("/img/Red-signin_Long_press_32dp.png");
 }

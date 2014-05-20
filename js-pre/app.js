@@ -3,13 +3,7 @@
 
 var duzuroApp = angular.module('duzuroApp', [
 	'ui.router',
-	'duzuroServices',
-	'duzuroVideoViewer',
-	'com.2fdevs.videogular',
-	'com.2fdevs.videogular.plugins.controls',
-	'com.2fdevs.videogular.plugins.overlayplay',
-	'com.2fdevs.videogular.plugins.buffering',
-	'com.2fdevs.videogular.plugins.poster'
+	'duzuroServices'
 ]);
 
 duzuroApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
@@ -20,70 +14,47 @@ duzuroApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
 
 		$stateProvider
 			// login states
-			// .state('login', {
+			.state('login', {
+				url: '/login',
+				templateUrl: '/partials/login.html',
+				controller: ['$scope', '$state', 'Authentication', 
+					function($scope, $state, Authentication) {
 
-			// })
+						$scope.onGoogleClick = function() {
+							Authentication.googleLogin().then(function(user) {
+								$state.go('project');
+							}, function(error) {
 
-			// video chooser states
-			// .state('videoChooser', {
+							});
+						}
+					}
+				]
+			})
 
-			// })
-			
-			// video viewer states
-			.state('videoViewer', {
+			// milestones - timeline view (fullscreen)
+
+			.state('project', {
 				url: '/',
-				views: {
-					'@' : {
-						templateUrl: '/partials/videoViewer/videoViewerBase.html'
-					},
-					'sideFrame@videoViewer': {
-						templateUrl: '/partials/videoViewer/questionsViewerFrame.html',
-						controller: 'QuestionsViewerCtrl'
-					},
-					'videoFrame@videoViewer': {
-						templateUrl: '/partials/videoViewer/videoViewerFrame.html',
-						controller: 'VideoViewerCtrl'
-					}
-				}
+				templateUrl: '/partials/project-timeline.html'
 			})
-			.state('videoViewer.askQuestion', {
-				url: 'ask',
-				views: {
-					'bottomFrame': {
-						templateUrl: '/partials/videoViewer/askQuestionFrame.html',
-						controller: 'AddQuestionCtrl'
-					}
-				}
-			})
-			.state('videoViewer.readQuestion', {
-				url: 'question/:qid',
-				views: {
-					'sideFrame': {
-						templateUrl: '/partials/videoViewer/questionViewerFrame.html',
-						controller: 'QuestionViewerCtrl'
-					},
-					'bottomFrame': {
-						template: 'Choose an answer in the sidebar'
-					}
-				}
-			})
-			.state('videoViewer.readQuestion.writeAnswer', {
-				url: '/answer',
-				views: {
-					'bottomFrame@videoViewer': {
-						templateUrl: '/partials/videoViewer/writeAnswerFrame.html',
-						controller: 'WriteAnswerCtrl'
-					}
-				}
-			})
-			.state('videoViewer.readQuestion.readAnswer', {
-				url: '/answer/:aid',
-				views: {
-					'bottomFrame@videoViewer': {
-						templateUrl: '/partials/videoViewer/readAnswerFrame.html',
-						controller: 'ReadAnswerCtrl'
-					}
-				}
+
+			.state('project.milestone', {
+				url: 'milestone/:milestoneId',
+				templateUrl: '/partials/milestone.html'
 			});
+	}
+]);
+
+duzuroApp.run(['$rootScope', '$state', 'Authentication',
+	function($rootScope, $state, Authentication) {
+
+		$rootScope.$on('$stateChangeStart', function(event, to, toParams, from, fromParams) {
+
+			// if(to.name !== 'login' && Authentication.currentUser() === null) {
+			// 	// console.log('here');
+			// 	event.preventDefault();
+			// 	$state.go('login');
+			// }
+		});
 	}
 ]);

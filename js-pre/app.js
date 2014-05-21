@@ -63,22 +63,22 @@ duzuroApp.controller('ProjectTimelineCtrl',['$scope', function($scope) {
 
 	$scope.projectName = "Web Proxy";
 	$scope.milestones = {
-		{
+		0: {
 			"id": 0,
 			"title": "Breaking down code structure", 
 			"users": 
 			{
-				{
+				0: {
 					"id": 0, 
 					"username": "cathy", 
 					"status": "3", 
 				}, 
-				{
+				1: {
 					"id": 1, 
 					"username": "david", 
 					"status": "3",
 				}, 
-				{
+				2: {
 					"id": 2, 
 					"username": "kamakshi", 
 					"status": "1"
@@ -86,44 +86,44 @@ duzuroApp.controller('ProjectTimelineCtrl',['$scope', function($scope) {
 			}
 
 		}, 
-		{
+		1: {
 			"id": 1, 
 			"title": "Title", 
 			"users": 
 			{
-				{
+				0: {
 					"id": 0, 
 					"username": "cathy", 
 					"status": "3", 
 				}, 
-				{
+				1: {
 					"id": 1, 
 					"username": "david", 
 					"status": "3",
 				}, 
-				{
+				2: {
 					"id": 2, 
 					"username": "kamakshi", 
 					"status": "1"
 				}
 			}
 		}, 
-		{
+		2: {
 			"id": 1, 
 			"title": "Title", 
 			"users": 
 			{
-				{
+				0: {
 					"id": 0, 
 					"username": "cathy", 
 					"status": "3", 
 				}, 
-				{
+				1: {
 					"id": 1, 
 					"username": "david", 
 					"status": "3",
 				}, 
-				{
+				2: {
 					"id": 2, 
 					"username": "kamakshi", 
 					"status": "1"

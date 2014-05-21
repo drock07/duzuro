@@ -302,3 +302,5 @@ duzuroApp.controller('ReadAnswerCtrl', ['$scope', '$state', '$stateParams', 'Que
 		$scope.answer = Questions.getAnswer($stateParams['qid'], $stateParams['aid']);
 	}
 ]);
+
+

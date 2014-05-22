@@ -35,13 +35,45 @@ duzuroApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
 
 			.state('project', {
 				url: '/',
-				templateUrl: '/partials/project-timeline.html'
+				templateUrl: '/partials/project-timeline.html',
+				controller: 'ProjectTimelineCtrl'
 			})
 
-			.state('project.milestone', {
+			.state('project.open', {
+				abstract: true,
+				template: '<ui-view/>',
+				onEnter: ['PageState', function(PageState) {
+					PageState.expand();
+				}],
+				onExit: ['PageState', function(PageState) {
+					PageState.compress();
+				}]
+			})
+
+			.state('project.open.milestone', {
 				url: 'milestone/:milestoneId',
-				templateUrl: '/partials/milestone.html'
+				templateUrl: '/partials/milestone.html',
+				controller: 'ProjectMilestoneCtrl'
 			});
+	}
+]);
+
+duzuroApp.factory('PageState', [
+	function() {
+		var state = {
+			expanded: false
+		};
+		return {
+			getState: function() {
+				return state;
+			},
+			expand: function() {
+				state.expanded = true;
+			},
+			compress: function() {
+				state.expanded = false;
+			}
+		};
 	}
 ]);
 
@@ -59,93 +91,30 @@ duzuroApp.run(['$rootScope', '$state', 'Authentication',
 	}
 ]);
 
-duzuroApp.controller('ProjectTimelineCtrl',['$scope', function($scope) {
+duzuroApp.controller('ProjectTimelineCtrl',['$scope', 'PageState', 'Projects',
+	function($scope, PageState, Projects) {
 
-	$scope.projectName = "Web Proxy";
-	$scope.milestones = {
-		0: {
-			"id": 0,
-			"title": "Breaking down code structure", 
-			"users": 
-			{
-				0: {
-					"id": 0, 
-					"username": "cathy", 
-					"status": "3", 
-				}, 
-				1: {
-					"id": 1, 
-					"username": "david", 
-					"status": "3",
-				}, 
-				2: {
-					"id": 2, 
-					"username": "kamakshi", 
-					"status": "1"
-				}
-			}
+		$scope.pageState = PageState.getState();
 
-		}, 
-		1: {
-			"id": 1, 
-			"title": "Title", 
-			"users": 
-			{
-				0: {
-					"id": 0, 
-					"username": "cathy", 
-					"status": "3", 
-				}, 
-				1: {
-					"id": 1, 
-					"username": "david", 
-					"status": "3",
-				}, 
-				2: {
-					"id": 2, 
-					"username": "kamakshi", 
-					"status": "1"
-				}
-			}
-		}, 
-		2: {
-			"id": 1, 
-			"title": "Title", 
-			"users": 
-			{
-				0: {
-					"id": 0, 
-					"username": "cathy", 
-					"status": "3", 
-				}, 
-				1: {
-					"id": 1, 
-					"username": "david", 
-					"status": "3",
-				}, 
-				2: {
-					"id": 2, 
-					"username": "kamakshi", 
-					"status": "1"
-				}
-			}
+		$scope.project = Projects.getProject('testProject');
+
+		$scope.statusName = function(status) {
+			var array = ["Just Started", "Working on it!", "Stuck!", "DONE!!!"];
+			return array[status];
 		}
-	};
 
-
-	$scope.statusName = function(status) {
-		var array = ["Just Started", "Working on it!", "Stuck!", "DONE!!!"];
-		return array[status];
+		$scope.statusColor = function(status) {
+			var colors = ["yellow", "green", "red", "blue"];
+			return colors[status];
+		}
 	}
+]); 
 
-	$scope.statusColor = function(status) {
-		var array = ["#FFFF00", "#009933", "#009933", "#0099FF"];
-		return array[status];
+duzuroApp.controller('ProjectMilestoneCtrl', ['$scope', '$stateParams', 'Projects',
+	function($scope, $stateParams, Projects) {
+		$scope.milestone = Projects.getMilestone($stateParams['milestoneId']);
 	}
-
-
-}]); 
-
+]);
 
 
 
@@ -153,12 +122,11 @@ var duzuroServices = angular.module('duzuroServices', [
 	'firebase'
 ]);
 
-duzuroServices.factory('Questions', ['$firebase',
+duzuroServices.factory('Projects', ['$firebase',
 	function($firebase) {
 		var fb = new Firebase("https://duzuro.firebaseio.com/");
 		var fb_base = $firebase(fb);
 		var fb_projects = fb_base.$child('projects');
-		// var fb_questions = fb_base.$child('questions');
 
 		function parseTime(time) {
 			var mm = Math.floor(time / 60);
@@ -170,12 +138,16 @@ duzuroServices.factory('Questions', ['$firebase',
 		}
 
 		return {
-			getMilestones: function() {
-				return fb_projects.$child('testProject');
+			getProject: function(id) {
+				return fb_projects.$child(id);
 			},
 
-			getMilestone: function() {
+			getMilestones: function() {
+				return fb_projects.$child('testProject/milestones');
+			},
 
+			getMilestone: function(id) {
+				return fb_projects.$child('testProject/milestones/' + id);
 			},
 
 			saveChat: function() {

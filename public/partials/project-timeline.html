@@ -1,32 +1,24 @@
-<div id="topFrameWrapper" ui-view></div>
-<div id="bottomFrameWrapper">
-<div ng-controller="ProjectTimelineCtrl">
-	<h1>{{projectName}}</h1>
+<div id="topFrameWrapper" ui-view ng-class="{expanded: pageState.expanded}"></div>
+<div id="bottomFrameWrapper" ng-class="{expanded: pageState.expanded}">
+	<div id="projectTimeline">
+		<div class="project-title" ng-hide="pageState.expanded">
+			<h1>{{ project.title }}</h1>
+		</div>
 
-<div id="timeline">
-		<hr id= "the-line" width="100%" />
+		<div class="project-timeline">
 
-	<div class="milestone">
-		<p class="milestone-text">Milestone 1: Something</p>
-		<span class="user red"><i class=".ra-icon-user:before"></i></span>
-		<span class="user red"><i class=".ra-icon-user:before"></i></span>
-		<span class="user red"><i class=".ra-icon-user:before"></i></span>
-
+			<ul>
+				<li class="milestone" ng-repeat="(id, m) in project.milestones">
+					<a ui-sref="project.open.milestone({milestoneId: id})">
+						<div class="milestone-title">{{ m.title }}</div>
+						<div class="dots" ng-hide="$last">
+							<div class="dot"></div>
+							<div class="dot"></div>
+							<div class="dot"></div>
+						</div>
+					</a>
+				</li>
+			</ul>
+		</div>
 	</div>
-
-
-	<div class="milestone"><p class="milestone-text">Milestone 1: Something</p></div>
-	<div class="milestone"><p class="milestone-text">Milestone 1: Something</p></div>
-	<div class="milestone"><p class="milestone-text">Milestone 1: Something</p></div>
-	<div class="milestone"><p class="milestone-text">Milestone 1: Something</p></div>
-	<div class="milestone"><p class="milestone-text">Milestone 1: Something</p></div>
-	<div class="milestone"><p class="milestone-text">Milestone 1: Something</p></div>
-	<div class="milestone"><p class="milestone-text">Milestone 1: Something</p></div>
-	<div class="milestone"><p class="milestone-text">Milestone 1: Something</p></div>
-	<div class="milestone"><p class="milestone-text">Milestone 1: Something</p></div>
-	<div class="milestone"><p class="milestone-text">Milestone 1: Something</p></div>
-
-
-</div>
-</div>
 </div>

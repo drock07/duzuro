@@ -2,12 +2,11 @@ var duzuroServices = angular.module('duzuroServices', [
 	'firebase'
 ]);
 
-duzuroServices.factory('Questions', ['$firebase',
+duzuroServices.factory('Projects', ['$firebase',
 	function($firebase) {
 		var fb = new Firebase("https://duzuro.firebaseio.com/");
 		var fb_base = $firebase(fb);
 		var fb_projects = fb_base.$child('projects');
-		// var fb_questions = fb_base.$child('questions');
 
 		function parseTime(time) {
 			var mm = Math.floor(time / 60);
@@ -19,12 +18,16 @@ duzuroServices.factory('Questions', ['$firebase',
 		}
 
 		return {
-			getMilestones: function() {
-				return fb_projects.$child('testProject');
+			getProject: function(id) {
+				return fb_projects.$child(id);
 			},
 
-			getMilestone: function() {
+			getMilestones: function() {
+				return fb_projects.$child('testProject/milestones');
+			},
 
+			getMilestone: function(id) {
+				return fb_projects.$child('testProject/milestones/' + id);
 			},
 
 			saveChat: function() {

@@ -128,13 +128,23 @@ duzuroApp.controller('ProjectTimelineCtrl',['$scope', 'PageState', 'Projects',
 duzuroApp.controller('ProjectMilestoneCtrl', ['$scope', '$stateParams', 'Projects', 'Authentication',
 	function($scope, $stateParams, Projects, Authentication) {
 		$scope.milestone = Projects.getMilestone($stateParams['milestoneId']);
+		$scope.authData = Authentication.getAuthData();
+
+		$scope.statusNames = ["just started", "working on it", "stuck", "done"];
+		$scope.userStatus = $scope.statusNames[0];
+
+		$scope.updateStatus = function() {
+			$scope.milestone.$child('users/' + $scope.authData.username).$set({
+				status: $scope.userStatus
+			});
+		};
 
 		$scope.sendChat = function() {
 
 			if(Authentication.checkLoggedIn()) {
 				$scope.milestone.$child('chat_stream').$add({
 					msg: $scope.message,
-					user: Authentication.getAuthData().username
+					user: $scope.authData.username
 				});
 
 				$scope.message = '';

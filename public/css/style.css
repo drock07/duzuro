@@ -2631,22 +2631,14 @@ a {
 #projectTimeline .project-timeline .milestone {
   display: inline-block;
   position: relative;
-  width: 250px;
-  height: 80px;
   margin-right: 120px;
-  padding: 10px;
+  padding: 25px;
   border-radius: 8px;
   background-color: #3498db;
   cursor: pointer;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_project_timeline\.scss}line{font-family:\0000355}}
 #projectTimeline .project-timeline .milestone .milestone-title {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
   font-size: 26.4px;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_project_timeline\.scss}line{font-family:\0000365}}
@@ -2790,7 +2782,16 @@ a {
 #milestone .chat-frame .chat-box .chat-stream .chat button:hover {
   background-color: #ecf0f1;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_milestone\.scss}line{font-family:\00003142}}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_milestone\.scss}line{font-family:\00003139}}
+#milestone .chat-frame .chat-box .chat-stream .chat button[disabled] {
+  color: #bdc3c7;
+  background-color: #7f8c8d;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_milestone\.scss}line{font-family:\00003143}}
+#milestone .chat-frame .chat-box .chat-stream .chat button[disabled]:hover {
+  background-color: #7f8c8d;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_milestone\.scss}line{font-family:\00003151}}
 #milestone .chat-frame .chat-box .chat-input {
   height: 46px;
   position: absolute;
@@ -2798,16 +2799,16 @@ a {
   left: 0;
   right: 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_milestone\.scss}line{font-family:\00003150}}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_milestone\.scss}line{font-family:\00003159}}
 #milestone .chat-frame .chat-box .chat-input .input-wrapper {
   width: 100%;
   padding-right: 100px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_milestone\.scss}line{font-family:\00003154}}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_milestone\.scss}line{font-family:\00003163}}
 #milestone .chat-frame .chat-box .chat-input .input-wrapper input {
   border-radius: 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_milestone\.scss}line{font-family:\00003159}}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_milestone\.scss}line{font-family:\00003168}}
 #milestone .chat-frame .chat-box .chat-input button {
   width: 100px;
   height: 46px;

@@ -41,11 +41,11 @@
 
             position: relative;
 
-            width: 250px;
-            height: 80px;
+            // width: 250px;
+            // height: 80px;
 
             margin-right: 120px;
-            padding: 10px;
+            padding: 25px;
             border-radius: 8px;
 
             background-color: $peter-river;
@@ -53,11 +53,11 @@
             cursor: pointer;
 
             .milestone-title {
-                position: absolute;
-                top: 50%;
-                left: 50%;
+                // position: absolute;
+                // top: 50%;
+                // left: 50%;
 
-                transform: translate(-50%, -50%);
+                // transform: translate(-50%, -50%);
 
                 font-size: $font-size-base * 1.2;
             }

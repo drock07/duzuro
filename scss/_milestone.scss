@@ -135,6 +135,15 @@
                         &:hover {
                             background-color: $clouds;
                         }
+
+                        &[disabled] {
+                            color: $silver;
+                            background-color: $asbestos;
+
+                            &:hover {
+                                background-color: $asbestos;
+                            }
+                        }
                     }
                 }
             }

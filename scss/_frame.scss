@@ -5,12 +5,26 @@
 
 #topFrameWrapper {
 	width: 100%;
-	height: 70%;
+	height: 0;
 
+	transition: all 0.25s;
+
+	&.expanded {
+		height: 70%;
+	}
+
+	background-color: red;
 }
 
 #bottomFrameWrapper {
 	width: 100%;
-	height: 30%;
+	height: 100%;
 
+	// transition: all 0.25s;
+
+	&.expanded {
+		height: 30%;
+	}
+
+	background-color: green;
 }

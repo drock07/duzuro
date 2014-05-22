@@ -1,7 +1,7 @@
-<div id="topFrameWrapper" ui-view></div>
-<div id="bottomFrameWrapper">
+<div id="topFrameWrapper" ng-class="{expanded: pageState.expanded}" ui-view></div>
+<div id="bottomFrameWrapper" ng-class="{expanded: pageState.expanded}">
 <div ng-controller="ProjectTimelineCtrl">
 	<h1>{{projectName}}</h1>
-
+	<a ui-sref="project.open.milestone({milestoneId: 1})">Milestone 1</a>
 </div>
 </div>

@@ -35,13 +35,46 @@ duzuroApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
 
 			.state('project', {
 				url: '/',
-				templateUrl: '/partials/project-timeline.html'
+				templateUrl: '/partials/project-timeline.html',
+				controller: 'ParentCtrl'
 			})
 
-			.state('project.milestone', {
+			.state('project.open', {
+				abstract: true,
+				onEnter: ['PageState', function(PageState) {
+					PageState.expand();
+				}],
+				onExit: ['PageState', function(PageState) {
+					PageState.compress();
+				}]
+			})
+
+			.state('project.open.milestone', {
 				url: 'milestone/:milestoneId',
-				templateUrl: '/partials/milestone.html'
+				templateUrl: '/partials/milestone.html',
+				controller: ['$scope', function($scope) {
+					// $scope.$parent.candy.expanded = true;
+				}]
 			});
+	}
+]);
+
+duzuroApp.factory('PageState', [
+	function() {
+		var state = {
+			expanded: false
+		};
+		return {
+			getState: function() {
+				return state;
+			},
+			expand: function() {
+				state.expanded = true;
+			},
+			compress: function() {
+				state.expanded = false;
+			}
+		};
 	}
 ]);
 
@@ -56,6 +89,12 @@ duzuroApp.run(['$rootScope', '$state', 'Authentication',
 			// 	$state.go('login');
 			// }
 		});
+	}
+]);
+
+duzuroApp.controller('ParentCtrl', ['$scope', 'PageState',
+	function($scope, PageState) {
+		$scope.pageState = PageState.getState();
 	}
 ]);
 

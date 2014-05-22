@@ -1,24 +1,4 @@
-/*!
- *	Fancy-TimeLine v.1.0
- *	
- *	Copyright (C) 2012 Juan Manuel Aguero (http://juanmaaguero.com.ar/sobre-mi)
- *	
- *	This file is part of Fancy-TimeLine.
- *	
- *	Fancy-TimeLine is free software: you can redistribute it and/or modify
- *	it under the terms of the GNU General Public License as published by
- *	the Free Software Foundation, either version 3 of the License, or
- *	(at your option) any later version.
- *	
- *	Fancy-TimeLine is distributed in the hope that it will be useful,
- *	but WITHOUT ANY WARRANTY; without even the implied warranty of
- *	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *	GNU General Public License for more details.
- *	
- *	You should have received a copy of the GNU General Public License
- *	along with Fancy-TimeLine.  If not, see <http://www.gnu.org/licenses/>.
- *	
-***/
+
 
 (function($) {  
     $.fn.fancyTimeline = function(params) {
@@ -154,24 +134,7 @@
                 dateStr +=  '</div>';
                 dateStr += '</div>';
             }
-            if(dateObj.type == "youtube-video"){
-                dateStr += '<div id="date-'+ i +'" class="timeline-item item-youtube-video" >';
-                dateStr +=  '<div class="timeline-item-content" >';
-                dateStr +=      '<span class="title">' + dateObj.title + '</span>';
-                dateStr +=      '<iframe width="260" height="160" src="http://www.youtube.com/embed/' + dateObj.youtubeId + '" frameborder="0" allowfullscreen></iframe>';
-                dateStr +=      '<p>' + dateObj.content + '</p>';
-                dateStr +=  '</div>';
-                dateStr += '</div>';
-            }
-            if(dateObj.type == "image"){
-                dateStr += '<div id="date-'+ i +'" class="timeline-item item-image" >';
-                dateStr +=  '<div class="timeline-item-content" >';
-                dateStr +=      '<span class="title">' + dateObj.title + '</span>';
-                dateStr +=      '<img src="http://img01.mr-static.com/photo/Nirvana/Nirvana-03-big.jpg">';
-                dateStr +=      '<p>' + dateObj.content + '</p>';
-                dateStr +=  '</div>';
-                dateStr += '</div>';
-            }
+            
 		
             dates += dateStr;
 		

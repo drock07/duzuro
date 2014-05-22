@@ -8,6 +8,8 @@ html, body {
 }
 
 body {
+	min-width: 960px;
+
 	position: relative;
 	overflow: hidden;
 
@@ -89,22 +91,22 @@ a {
 	position: relative;
 }
 
-.table {
+.dz-table {
 	display: table;
+	.table-row {
+		display: table-row;
+	}
+
+	.table-row-0 {
+		display: table-row;
+		height: 0;
+	}
+
+	.table-col {
+		display: table-cell;
+	}
 }
 
-.table-row {
-	display: table-row;
-}
-
-.table-row-0 {
-	display: table-row;
-	height: 0;
-}
-
-.table-col {
-	display: table-cell;
-}
 
 .hide {
 	display: none;

@@ -80,14 +80,29 @@ duzuroApp.factory('PageState', [
 duzuroApp.run(['$rootScope', '$state', 'Authentication',
 	function($rootScope, $state, Authentication) {
 
-		$rootScope.$on('$stateChangeStart', function(event, to, toParams, from, fromParams) {
+		// $rootScope.$on('$stateChangeStart', function(event, to, toParams, from, fromParams) {
 
-			// if(to.name !== 'login' && Authentication.currentUser() === null) {
-			// 	// console.log('here');
-			// 	event.preventDefault();
-			// 	$state.go('login');
-			// }
-		});
+		// 	if(to.name !== 'login' && Authentication.currentUser() === null) {
+		// 		// console.log('here');
+		// 		event.preventDefault();
+		// 		$state.go('login');
+		// 	}
+		// });
+	}
+]);
+
+duzuroApp.controller('HeaderCtrl', ['$scope', 'Authentication',
+	function($scope, Authentication) {
+		// console.log(Authentication.currentUser());
+		// $scope.user = Authentication.currentUser();
+
+		$scope.authData = Authentication.getAuthData();
+
+		$scope.setUsername = function() {
+			if($scope.username) {
+				Authentication.setUsername($scope.username);
+			}
+		};
 	}
 ]);
 
@@ -110,9 +125,28 @@ duzuroApp.controller('ProjectTimelineCtrl',['$scope', 'PageState', 'Projects',
 	}
 ]); 
 
-duzuroApp.controller('ProjectMilestoneCtrl', ['$scope', '$stateParams', 'Projects',
-	function($scope, $stateParams, Projects) {
+duzuroApp.controller('ProjectMilestoneCtrl', ['$scope', '$stateParams', 'Projects', 'Authentication',
+	function($scope, $stateParams, Projects, Authentication) {
 		$scope.milestone = Projects.getMilestone($stateParams['milestoneId']);
+
+		$scope.sendChat = function() {
+
+			if(Authentication.checkLoggedIn()) {
+				$scope.milestone.$child('chat_stream').$add({
+					msg: $scope.message,
+					user: Authentication.getAuthData().username
+				});
+
+				$scope.message = '';
+			}
+		};
+
+		$scope.pinPost = function(chat) {
+			$scope.milestone.$child('pinned_posts').$add({
+				msg: chat.msg,
+				user: chat.user
+			});
+		};
 	}
 ]);
 
@@ -165,29 +199,109 @@ duzuroServices.factory('Projects', ['$firebase',
 	}
 ]);
 
-duzuroServices.factory('Authentication', ['$firebaseSimpleLogin',
-	function($firebaseSimpleLogin) {
-		var loginObject = $firebaseSimpleLogin(new Firebase("https://duzuro.firebaseio.com/"));
+duzuroServices.factory('Authentication', ['$firebaseSimpleLogin', '$window',
+	function($firebaseSimpleLogin, $window) {
+		// var loginObject = $firebaseSimpleLogin(new Firebase("https://duzuro.firebaseio.com/"));
+
+		var authData = {
+			loggedIn: false,
+			username: ''
+		};
 
 		return {
-			currentUser: function() {
-				if(!loginObject.user)
-					return null;
-				return {
-					name: loginObject.user.displayName,
-					id: loginObject.user.uid,
-					photo_url: loginObject.user.thirdPartyUserData.picture,
-					photo_url_small: loginObject.user.thirdPartyUserData.picture + "?sz=50"
-				};
+			// currentUser: function() {
+			// 	// if(!loginObject.user)
+			// 	// 	return null;
+			// 	// return {
+			// 	// 	name: loginObject.user.displayName,
+			// 	// 	id: loginObject.user.uid,
+			// 	// 	photo_url: loginObject.user.thirdPartyUserData.picture,
+			// 	// 	photo_url_small: loginObject.user.thirdPartyUserData.picture + "?sz=50"
+			// 	// };
+			// 	// return loginObject.$getCurrentUser();
+			// 	return loginObject.user;
+			// },
+			// googleLogin: function() {
+			// 	return loginObject.$login('google', {
+			// 		rememberMe: true
+			// 	});
+			// }
+
+			getAuthData: function() {
+				return authData;
 			},
-			googleLogin: function() {
-				return loginObject.$login('google', {
-					rememberMe: true
-				});
+
+			setUsername: function(name) {
+				authData.username = name;
+				authData.loggedIn = true;
+			},
+
+			checkLoggedIn: function() {
+				if(!authData.loggedIn) {
+					$window.alert('Must choose a username to complete this action. Check the top of the page.');
+					return false;
+				} else {
+					return true;
+				}
 			}
 		};
 	}
 ]);
+
+duzuroServices.directive('ngEnter', function() {
+	return function (scope, element, attrs) {
+		element.bind("keydown keypress", function (event) {
+			if(event.which === 13) {
+				scope.$apply(function () {
+					scope.$eval(attrs.ngEnter);
+				});
+
+				event.preventDefault();
+			}
+		});
+	};
+});
+
+duzuroServices.directive('dzTabs', function() {
+	return {
+		restrict: 'E',
+		transclude: true,
+		scope: {},
+		controller: ['$scope', function($scope) {
+			var panes = $scope.panes = [];
+
+			$scope.select = function(pane) {
+				angular.forEach(panes, function(pane) {
+					pane.selected = false;
+				});
+				pane.selected = true;
+			};
+
+			this.addPane = function(pane) {
+				if(panes.length === 0) {
+					$scope.select(pane);
+				}
+				panes.push(pane);
+			};
+		}],
+		templateUrl: '/partials/directives/dzTabs.html'
+	};
+});
+
+duzuroServices.directive('dzTabPane', function() {
+	return {
+		require: '^dzTabs',
+		restrict: 'E',
+		transclude: true,
+		scope: {
+			title: '@'
+		},
+		link: function(scope, element, attrs, tabsCtrl) {
+			tabsCtrl.addPane(scope);
+		},
+		templateUrl: '/partials/directives/dzTabPane.html'
+	};
+});
 var duzuroVideoViewer = angular.module('duzuroVideoViewer', [
 	'ui.router',
 	'duzuroServices'

@@ -80,14 +80,29 @@ duzuroApp.factory('PageState', [
 duzuroApp.run(['$rootScope', '$state', 'Authentication',
 	function($rootScope, $state, Authentication) {
 
-		$rootScope.$on('$stateChangeStart', function(event, to, toParams, from, fromParams) {
+		// $rootScope.$on('$stateChangeStart', function(event, to, toParams, from, fromParams) {
 
-			// if(to.name !== 'login' && Authentication.currentUser() === null) {
-			// 	// console.log('here');
-			// 	event.preventDefault();
-			// 	$state.go('login');
-			// }
-		});
+		// 	if(to.name !== 'login' && Authentication.currentUser() === null) {
+		// 		// console.log('here');
+		// 		event.preventDefault();
+		// 		$state.go('login');
+		// 	}
+		// });
+	}
+]);
+
+duzuroApp.controller('HeaderCtrl', ['$scope', 'Authentication',
+	function($scope, Authentication) {
+		// console.log(Authentication.currentUser());
+		// $scope.user = Authentication.currentUser();
+
+		$scope.authData = Authentication.getAuthData();
+
+		$scope.setUsername = function() {
+			if($scope.username) {
+				Authentication.setUsername($scope.username);
+			}
+		};
 	}
 ]);
 
@@ -110,9 +125,28 @@ duzuroApp.controller('ProjectTimelineCtrl',['$scope', 'PageState', 'Projects',
 	}
 ]); 
 
-duzuroApp.controller('ProjectMilestoneCtrl', ['$scope', '$stateParams', 'Projects',
-	function($scope, $stateParams, Projects) {
+duzuroApp.controller('ProjectMilestoneCtrl', ['$scope', '$stateParams', 'Projects', 'Authentication',
+	function($scope, $stateParams, Projects, Authentication) {
 		$scope.milestone = Projects.getMilestone($stateParams['milestoneId']);
+
+		$scope.sendChat = function() {
+
+			if(Authentication.checkLoggedIn()) {
+				$scope.milestone.$child('chat_stream').$add({
+					msg: $scope.message,
+					user: Authentication.getAuthData().username
+				});
+
+				$scope.message = '';
+			}
+		};
+
+		$scope.pinPost = function(chat) {
+			$scope.milestone.$child('pinned_posts').$add({
+				msg: chat.msg,
+				user: chat.user
+			});
+		};
 	}
 ]);
 

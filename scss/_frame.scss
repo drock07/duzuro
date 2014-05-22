@@ -1,4 +1,23 @@
+#header {
+	width: 100%;
+	height: $header-height;
+
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+
+	background-color: $peter-river;
+}
+
 #mainViewWrapper {
+	width: 100%;
+	height: 100%;
+
+	padding-top: $header-height;
+}
+
+#mainView {
 	width: 100%;
 	height: 100%;
 }
@@ -28,6 +47,6 @@
 
 	&.expanded {
 		height: 30%;
-		background-color: $asbestos;
+		background-color: $midnight-blue;
 	}
 }

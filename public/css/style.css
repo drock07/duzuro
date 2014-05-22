@@ -2353,47 +2353,48 @@ html, body {
 
 @media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_globals\.scss}line{font-family:\0000310}}
 body {
+  min-width: 960px;
   position: relative;
   overflow: hidden;
   font-family: 'Open Sans', sans-serif;
   font-size: 22px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_globals\.scss}line{font-family:\0000318}}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_globals\.scss}line{font-family:\0000320}}
 button {
   min-width: 100px;
   cursor: pointer;
   border: none;
   border-radius: 8px;
   padding: 10px 15px;
-  background-color: #ecf0f1;
+  background-color: #fefefe;
   font-family: 'Open Sans', sans-serif;
   font-size: 22px;
   font-weight: bold;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_globals\.scss}line{font-family:\0000331}}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_globals\.scss}line{font-family:\0000333}}
 button:hover {
   background-color: white;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_globals\.scss}line{font-family:\0000335}}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_globals\.scss}line{font-family:\0000337}}
 button:active {
-  background-color: #ecf0f1;
+  background-color: #fefefe;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_globals\.scss}line{font-family:\0000339}}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_globals\.scss}line{font-family:\0000341}}
 button.blue {
   background-color: #11609f;
-  color: #ecf0f1;
+  color: #fefefe;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_globals\.scss}line{font-family:\0000343}}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_globals\.scss}line{font-family:\0000345}}
 button.blue:hover {
   background-color: #167ccd;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_globals\.scss}line{font-family:\0000347}}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_globals\.scss}line{font-family:\0000349}}
 button.blue:active {
   background-color: #11609f;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_globals\.scss}line{font-family:\0000353}}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_globals\.scss}line{font-family:\0000355}}
 input[type=text] {
   width: 100%;
   padding: 8px 12px;
@@ -2403,7 +2404,7 @@ input[type=text] {
   font-size: 22px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_globals\.scss}line{font-family:\0000364}}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_globals\.scss}line{font-family:\0000366}}
 textarea {
   width: 100%;
   padding: 8px;
@@ -2414,62 +2415,77 @@ textarea {
   font-size: 22px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_globals\.scss}line{font-family:\0000377}}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_globals\.scss}line{font-family:\0000379}}
 a {
-  color: #ecf0f1;
+  color: #fefefe;
   text-decoration: none;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_globals\.scss}line{font-family:\0000386}}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_globals\.scss}line{font-family:\0000388}}
 .fill-space {
   width: 100%;
   height: 100%;
   position: relative;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_globals\.scss}line{font-family:\0000392}}
-.table {
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_globals\.scss}line{font-family:\0000394}}
+.dz-table {
   display: table;
 }
-
 @media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_globals\.scss}line{font-family:\0000396}}
-.table-row {
+.dz-table .table-row {
   display: table-row;
 }
-
 @media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_globals\.scss}line{font-family:\00003100}}
-.table-row-0 {
+.dz-table .table-row-0 {
   display: table-row;
   height: 0;
 }
-
 @media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_globals\.scss}line{font-family:\00003105}}
-.table-col {
+.dz-table .table-col {
   display: table-cell;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_globals\.scss}line{font-family:\00003109}}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_globals\.scss}line{font-family:\00003111}}
 .hide {
   display: none;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_globals\.scss}line{font-family:\00003113}}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_globals\.scss}line{font-family:\00003115}}
 .right {
   float: right;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_globals\.scss}line{font-family:\00003117}}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_globals\.scss}line{font-family:\00003119}}
 .left {
   float: left;
 }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_frame\.scss}line{font-family:\000031}}
+#header {
+  width: 100%;
+  height: 50px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #3498db;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_frame\.scss}line{font-family:\0000313}}
 #mainViewWrapper {
+  width: 100%;
+  height: 100%;
+  padding-top: 50px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_frame\.scss}line{font-family:\0000320}}
+#mainView {
   width: 100%;
   height: 100%;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_frame\.scss}line{font-family:\000036}}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_frame\.scss}line{font-family:\0000325}}
 #topFrameWrapper {
   width: 100%;
   height: 0;
@@ -2478,22 +2494,22 @@ a {
   -webkit-transition: all 0.25s;
   transition: all 0.25s;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_frame\.scss}line{font-family:\0000316}}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_frame\.scss}line{font-family:\0000335}}
 #topFrameWrapper.expanded {
   height: 70%;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_frame\.scss}line{font-family:\0000321}}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_frame\.scss}line{font-family:\0000340}}
 #bottomFrameWrapper {
   width: 100%;
   height: 100%;
   position: relative;
   background-color: #ecf0f1;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_frame\.scss}line{font-family:\0000329}}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_frame\.scss}line{font-family:\0000348}}
 #bottomFrameWrapper.expanded {
   height: 30%;
-  background-color: #7f8c8d;
+  background-color: #2c3e50;
 }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_login\.scss}line{font-family:\000031}}
@@ -2516,25 +2532,63 @@ a {
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   padding: 15px;
-  background-color: #ecf0f1;
+  background-color: #fefefe;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_login\.scss}line{font-family:\0000327}}
-#loginModalOverlay .modal .google-button {
+
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_login\.scss}line{font-family:\0000331}}
+.google-button {
   width: 197px;
   height: 42px;
   padding: 0;
   background-color: transparent;
   background-image: url("/img/Red-signin_Long_base_32dp.png");
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_login\.scss}line{font-family:\0000335}}
-#loginModalOverlay .modal .google-button:hover {
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_login\.scss}line{font-family:\0000339}}
+.google-button:hover {
   background-color: transparent;
   background-image: url("/img/Red-signin_Long_hover_32dp.png");
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_login\.scss}line{font-family:\0000340}}
-#loginModalOverlay .modal .google-button:active {
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_login\.scss}line{font-family:\0000344}}
+.google-button:active {
   background-color: transparent;
   background-image: url("/img/Red-signin_Long_press_32dp.png");
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_login\.scss}line{font-family:\0000350}}
+.login-box {
+  width: 450px;
+  height: 100%;
+  float: right;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_login\.scss}line{font-family:\0000356}}
+.login-box .input-wrapper {
+  width: 100%;
+  padding-right: 100px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_login\.scss}line{font-family:\0000360}}
+.login-box .input-wrapper input {
+  height: 100%;
+  border-radius: 0;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_login\.scss}line{font-family:\0000366}}
+.login-box button {
+  width: 100px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-radius: 0;
+  color: #fefefe;
+  background-color: #2ecc71;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_login\.scss}line{font-family:\0000381}}
+.account-box {
+  width: 100%;
+  height: 100%;
+  color: #fefefe;
+  padding: 8px;
+  text-align: right;
 }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_project_timeline\.scss}line{font-family:\000031}}
@@ -2581,10 +2635,11 @@ a {
   height: 80px;
   margin-right: 120px;
   padding: 10px;
-  background-color: #bdc3c7;
+  border-radius: 8px;
+  background-color: #3498db;
   cursor: pointer;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_project_timeline\.scss}line{font-family:\0000354}}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_project_timeline\.scss}line{font-family:\0000355}}
 #projectTimeline .project-timeline .milestone .milestone-title {
   position: absolute;
   top: 50%;
@@ -2594,7 +2649,7 @@ a {
   transform: translate(-50%, -50%);
   font-size: 26.4px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_project_timeline\.scss}line{font-family:\0000364}}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_project_timeline\.scss}line{font-family:\0000365}}
 #projectTimeline .project-timeline .milestone .dots {
   position: absolute;
   top: 50%;
@@ -2603,11 +2658,163 @@ a {
   -ms-transform: translate(0, -50%);
   transform: translate(0, -50%);
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_project_timeline\.scss}line{font-family:\0000371}}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_project_timeline\.scss}line{font-family:\0000372}}
 #projectTimeline .project-timeline .milestone .dots .dot {
   display: inline-block;
   width: 30px;
   height: 30px;
   border-radius: 50%;
+  background-color: #3498db;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_milestone\.scss}line{font-family:\000031}}
+#milestone {
+  width: 100%;
+  height: 100%;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_milestone\.scss}line{font-family:\000035}}
+#milestone .details-frame {
+  width: 50%;
+  height: 100%;
+  float: left;
+  padding: 20px;
+  padding-right: 10px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_milestone\.scss}line{font-family:\0000317}}
+#milestone .details-frame .milestone-title {
+  padding: 12px;
+  font-size: 35.2px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_milestone\.scss}line{font-family:\0000323}}
+#milestone .details-frame dz-tabs {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_milestone\.scss}line{font-family:\0000328}}
+#milestone .details-frame dz-tabs .tabs-wrapper {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_milestone\.scss}line{font-family:\0000333}}
+#milestone .details-frame dz-tabs .tabs-wrapper .tabs-box {
+  width: 100%;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_milestone\.scss}line{font-family:\0000336}}
+#milestone .details-frame dz-tabs .tabs-wrapper .tabs-box .tab {
+  display: inline-block;
+  color: #2c3e50;
+  text-align: center;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_milestone\.scss}line{font-family:\0000342}}
+#milestone .details-frame dz-tabs .tabs-wrapper .tabs-box .tab a {
+  display: block;
+  padding: 8px;
+  text-decoration: none;
+  color: #2c3e50;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_milestone\.scss}line{font-family:\0000351}}
+#milestone .details-frame dz-tabs .tabs-wrapper .tabs-box .tab.active {
+  background-color: #fefefe;
+  color: #2c3e50;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_milestone\.scss}line{font-family:\0000354}}
+#milestone .details-frame dz-tabs .tabs-wrapper .tabs-box .tab.active a {
+  color: #2c3e50;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_milestone\.scss}line{font-family:\0000359}}
+#milestone .details-frame dz-tabs .tabs-wrapper .tab-content {
+  width: 100%;
+  height: 100%;
+  background-color: #fefefe;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_milestone\.scss}line{font-family:\0000365}}
+#milestone .details-frame dz-tabs .tabs-wrapper .tab-content .tab-pane {
+  width: 100%;
+  height: 100%;
+  padding: 12px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_milestone\.scss}line{font-family:\0000376}}
+#milestone .chat-frame {
+  width: 50%;
+  height: 100%;
+  float: left;
+  padding: 20px;
+  padding-left: 10px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_milestone\.scss}line{font-family:\0000385}}
+#milestone .chat-frame .chat-box {
+  width: 100%;
+  height: 100%;
+  position: relative;
   background-color: #bdc3c7;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_milestone\.scss}line{font-family:\0000393}}
+#milestone .chat-frame .chat-box .chat-stream {
+  width: 100%;
+  height: 100%;
+  padding: 8px;
+  padding-bottom: 108px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_milestone\.scss}line{font-family:\00003103}}
+#milestone .chat-frame .chat-box .chat-stream .chat {
+  width: 100%;
+  padding: 10px;
+  padding-right: 42px;
+  margin-bottom: 8px;
+  position: relative;
+  background-color: #fefefe;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_milestone\.scss}line{font-family:\00003112}}
+#milestone .chat-frame .chat-box .chat-stream .chat h1 {
+  color: #95a5a6;
+  font-size: 13.2px;
+  margin-bottom: 6px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_milestone\.scss}line{font-family:\00003122}}
+#milestone .chat-frame .chat-box .chat-stream .chat button {
+  min-width: 0px;
+  width: 32px;
+  height: 100%;
+  padding: 0px;
+  border-radius: 0px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_milestone\.scss}line{font-family:\00003135}}
+#milestone .chat-frame .chat-box .chat-stream .chat button:hover {
+  background-color: #ecf0f1;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_milestone\.scss}line{font-family:\00003142}}
+#milestone .chat-frame .chat-box .chat-input {
+  height: 46px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_milestone\.scss}line{font-family:\00003150}}
+#milestone .chat-frame .chat-box .chat-input .input-wrapper {
+  width: 100%;
+  padding-right: 100px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_milestone\.scss}line{font-family:\00003154}}
+#milestone .chat-frame .chat-box .chat-input .input-wrapper input {
+  border-radius: 0;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_milestone\.scss}line{font-family:\00003159}}
+#milestone .chat-frame .chat-box .chat-input button {
+  width: 100px;
+  height: 46px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-radius: 0;
+  color: #fefefe;
+  background-color: #2ecc71;
 }

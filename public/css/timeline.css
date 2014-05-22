@@ -1,0 +1,77 @@
+
+.milestone {
+
+	float: left;
+    margin-left: 20px;
+    border: 1px solid grey;
+    border-radius: 15px;
+
+    height: 120px;
+    width: 240px;
+    font-family: sans-serif;
+    font-size: 85%;
+
+    z-index: 9999;
+
+}
+
+.milestone-content {
+	width: 90%;
+    height: 90%;
+    margin: auto;
+    margin-top: 8px;
+}
+
+
+.milestone-title {
+	display: block;
+    font-weight: bold;
+    font-size: 16px;
+    font: Arial;
+}
+
+#timeline {
+	margin: 120px 2px 2px 2px; 
+	padding: 8px;
+	overflow-x: scroll;
+	vertical-align: center;
+	white-space: nowrap;
+
+}
+
+#timeline-display {
+	position: relative;
+    left: 0px;
+    width: 5000px;
+    display: table;
+    margin-top: 100px;
+    height: 300px;
+    z-index: 0;
+}
+
+
+#the-line{
+    width: 100%;
+    height: 3px;
+    top: 5px;
+    background-color: #666;
+    position: relative;
+    z-index: -1;
+}
+
+
+/* User Status Colors */
+.yellow {
+	color: #FFFF00;
+}
+.green {
+	color: #009933;
+}
+
+.red {
+	color: #980000;
+}
+
+.blue {
+	color: #0099FF;
+}

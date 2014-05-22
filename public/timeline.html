@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="language" content="spanish"/>
+        <meta name="author" content="Flowcode"/>
+        <title>Fancy Timeline - Example</title>
+        <link rel="shortcut icon" href="favicon.ico" />
+
+        <link rel="stylesheet" type="text/css" href="css/global.css">
+
+        <!-- jquery -->
+        <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+        <!-- fancy-timeline -->
+        <script type="text/javascript" src="js/fancy-timeline.js"></script>
+        <link type="text/css" href="css/fancy-timeline.css" rel="stylesheet" />
+
+    </head>
+    <body>
+    <h1>Project Title</h1>
+
+        <!-- content -->
+        <div id="content">
+            <div id="container">
+                <div class="timeline-container"></div>
+            </div>
+        </div>
+
+
+        <script type="text/javascript">
+            $(document).ready(function(){
+                var dates = [
+                    {
+                        "marker": "1", 
+                        "type": "default",
+                        "title": "Milestone 1" ,
+                        "content": "Here's some stuff."
+                    },
+                    {
+                        "marker": "2", 
+                        "type": "default",
+                        "title": "Milestone 2",
+                        "content": "Here's some more stuff."
+                    },
+                    {
+                        "marker": "3", 
+                        "type": "default",
+                        "title": "Milestone 3" ,
+                        "content": "Blah"
+                    }
+                ];
+    
+                $(".timeline-container").fancyTimeline({
+                    initPos: 0,
+                    data: dates
+                });
+            });
+        </script>
+    </body>
+</html>
+
+

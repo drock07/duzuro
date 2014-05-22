@@ -168,7 +168,7 @@ duzuroApp.controller('ProjectTimelineCtrl',['$scope', function($scope) {
 					"status": "1"
 				}
 			}
-		}, 
+		}
 	};
 
 
@@ -178,8 +178,8 @@ duzuroApp.controller('ProjectTimelineCtrl',['$scope', function($scope) {
 	}
 
 	$scope.statusColor = function(status) {
-		var array = ["#FFFF00", "#009933", "#009933", "#0099FF"];
-		return array[status];
+		var colors = ["yellow", "green", "red", "blue"];
+		return colors[status];
 	}
 
 

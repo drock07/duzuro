@@ -129,7 +129,7 @@ duzuroApp.controller('ProjectTimelineCtrl',['$scope', function($scope) {
 					"status": "1"
 				}
 			}
-		}, 
+		}
 	};
 
 

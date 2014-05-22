@@ -1,0 +1,41 @@
+
+.milestone {
+
+	border-radius: 10px;
+	border: 1px solid grey;
+	padding: 5px;
+	margin: 15px;
+	display: inline-block;
+	width: 120px;
+	height: 80px;
+	text-align: center;
+	white-space: pre-line;
+	z-index: 1;
+
+}
+
+#timeline {
+	margin: 120px 2px 2px 2px; 
+	padding: 8px;
+	overflow-x: scroll;
+	vertical-align: center;
+	white-space: nowrap;
+	
+}
+
+
+
+hr {
+    border: 0;
+    height: 2px;
+    z-index: -1;
+    overflow-x: scroll;
+
+    background: #333;
+    background-image: -webkit-linear-gradient(left, #ccc, #333, #ccc); 
+    background-image:    -moz-linear-gradient(left, #ccc, #333, #ccc); 
+    background-image:     -ms-linear-gradient(left, #ccc, #333, #ccc); 
+    background-image:      -o-linear-gradient(left, #ccc, #333, #ccc); 
+
+    margin: 50px;
+}

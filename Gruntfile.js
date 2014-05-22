@@ -166,6 +166,12 @@ module.exports = function(grunt) {
 		'watch'
 	]);
 
+	grunt.registerTask('compile', [
+		'concat:dev',
+		'sass:dev',
+		'autoprefixer'
+	]);
+
 	grunt.registerTask('production', [
 		'concat:dist',
 		'uglify:dist',

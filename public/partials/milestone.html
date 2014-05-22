@@ -20,7 +20,7 @@
                     <dz-tab-pane title="User Progress">
                         <div ng-show="authData.loggedIn">
                             <select ng-model="userStatus" ng-options="value for value in statusNames"></select>
-                            <button ng-click="updateStatus()">Update</button>
+                            <button id="updateButton" ng-click="updateStatus()">Update</button>
                         </div>
                         <ul>
                             <li ng-repeat="(name, user) in milestone.users">

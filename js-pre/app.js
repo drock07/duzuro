@@ -35,116 +35,129 @@ duzuroApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
 
 			.state('project', {
 				url: '/',
-				templateUrl: '/partials/project-timeline.html'
+				templateUrl: '/partials/project-timeline.html',
+				controller: 'ProjectTimelineCtrl'
 			})
 
-			.state('project.milestone', {
+			.state('project.open', {
+				abstract: true,
+				template: '<ui-view/>',
+				onEnter: ['PageState', function(PageState) {
+					PageState.expand();
+				}],
+				onExit: ['PageState', function(PageState) {
+					PageState.compress();
+				}]
+			})
+
+			.state('project.open.milestone', {
 				url: 'milestone/:milestoneId',
-				templateUrl: '/partials/milestone.html'
+				templateUrl: '/partials/milestone.html',
+				controller: 'ProjectMilestoneCtrl'
 			});
+	}
+]);
+
+duzuroApp.factory('PageState', [
+	function() {
+		var state = {
+			expanded: false
+		};
+		return {
+			getState: function() {
+				return state;
+			},
+			expand: function() {
+				state.expanded = true;
+			},
+			compress: function() {
+				state.expanded = false;
+			}
+		};
 	}
 ]);
 
 duzuroApp.run(['$rootScope', '$state', 'Authentication',
 	function($rootScope, $state, Authentication) {
 
-		$rootScope.$on('$stateChangeStart', function(event, to, toParams, from, fromParams) {
+		// $rootScope.$on('$stateChangeStart', function(event, to, toParams, from, fromParams) {
 
-			// if(to.name !== 'login' && Authentication.currentUser() === null) {
-			// 	// console.log('here');
-			// 	event.preventDefault();
-			// 	$state.go('login');
-			// }
-		});
+		// 	if(to.name !== 'login' && Authentication.currentUser() === null) {
+		// 		// console.log('here');
+		// 		event.preventDefault();
+		// 		$state.go('login');
+		// 	}
+		// });
 	}
 ]);
 
-duzuroApp.controller('ProjectTimelineCtrl',['$scope', function($scope) {
+duzuroApp.controller('HeaderCtrl', ['$scope', 'Authentication',
+	function($scope, Authentication) {
+		// console.log(Authentication.currentUser());
+		// $scope.user = Authentication.currentUser();
 
-	$scope.projectName = "Web Proxy";
-	$scope.milestones = {
-		0: {
-			"id": 0,
-			"title": "Breaking down code structure", 
-			"users": 
-			{
-				0: {
-					"id": 0, 
-					"username": "cathy", 
-					"status": "3", 
-				}, 
-				1: {
-					"id": 1, 
-					"username": "david", 
-					"status": "3",
-				}, 
-				2: {
-					"id": 2, 
-					"username": "kamakshi", 
-					"status": "1"
-				}
-			}
+		$scope.authData = Authentication.getAuthData();
 
-		}, 
-		1: {
-			"id": 1, 
-			"title": "Title", 
-			"users": 
-			{
-				0: {
-					"id": 0, 
-					"username": "cathy", 
-					"status": "3", 
-				}, 
-				1: {
-					"id": 1, 
-					"username": "david", 
-					"status": "3",
-				}, 
-				2: {
-					"id": 2, 
-					"username": "kamakshi", 
-					"status": "1"
-				}
+		$scope.setUsername = function() {
+			if($scope.username) {
+				Authentication.setUsername($scope.username);
 			}
-		}, 
-		2: {
-			"id": 1, 
-			"title": "Title", 
-			"users": 
-			{
-				0: {
-					"id": 0, 
-					"username": "cathy", 
-					"status": "3", 
-				}, 
-				1: {
-					"id": 1, 
-					"username": "david", 
-					"status": "3",
-				}, 
-				2: {
-					"id": 2, 
-					"username": "kamakshi", 
-					"status": "1"
-				}
-			}
+		};
+	}
+]);
+
+duzuroApp.controller('ProjectTimelineCtrl',['$scope', 'PageState', 'Projects',
+	function($scope, PageState, Projects) {
+
+		$scope.pageState = PageState.getState();
+
+		$scope.project = Projects.getProject('testProject');
+
+		$scope.statusName = function(status) {
+			var array = ["Just Started", "Working on it!", "Stuck!", "DONE!!!"];
+			return array[status];
 		}
-	};
 
-
-	$scope.statusName = function(status) {
-		var array = ["Just Started", "Working on it!", "Stuck!", "DONE!!!"];
-		return array[status];
+		$scope.statusColor = function(status) {
+			var colors = ["yellow", "green", "red", "blue"];
+			return colors[status];
+		}
 	}
+]); 
 
-	$scope.statusColor = function(status) {
-		var colors = ["yellow", "green", "red", "blue"];
-		return colors[status];
+duzuroApp.controller('ProjectMilestoneCtrl', ['$scope', '$stateParams', 'Projects', 'Authentication',
+	function($scope, $stateParams, Projects, Authentication) {
+		$scope.milestone = Projects.getMilestone($stateParams['milestoneId']);
+		$scope.authData = Authentication.getAuthData();
+
+		$scope.statusNames = ["just started", "working on it", "stuck", "done"];
+		$scope.userStatus = $scope.statusNames[0];
+
+		$scope.updateStatus = function() {
+			$scope.milestone.$child('users/' + $scope.authData.username).$set({
+				status: $scope.userStatus
+			});
+		};
+
+		$scope.sendChat = function() {
+
+			if(Authentication.checkLoggedIn()) {
+				$scope.milestone.$child('chat_stream').$add({
+					msg: $scope.message,
+					user: $scope.authData.username
+				});
+
+				$scope.message = '';
+			}
+		};
+
+		$scope.pinPost = function(chat) {
+			$scope.milestone.$child('pinned_posts').$add({
+				msg: chat.msg,
+				user: chat.user
+			});
+		};
 	}
-
-
-}]); 
-
+]);
 
 

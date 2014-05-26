@@ -1,1 +1,180 @@
-<h1>This is where the milestone info goes.</h1>
+<div id="milestone">
+    <div class="details-frame">
+        <div class="details-content fill-space dz-table">
+            <div class="table-row-0">
+                <h1 class="milestone-title">{{ milestone.title }}</h1>
+            </div>
+            <div class="table-row">
+                <dz-tabs>
+                    <dz-tab-pane title="Summary">
+                        <p>{{ milestone.description }}</p>
+                    </dz-tab-pane>
+                    <dz-tab-pane title="Pinned Posts">
+                        <ul>
+                            <li ng-repeat="(id, post) in milestone.pinned_posts">
+                                <h1><em>{{ post.user }}</em></h1>
+                                <p>{{ post.msg }}</p>
+                            </li>
+                        </ul>
+                    </dz-tab-pane>
+                    <dz-tab-pane title="User Progress">
+                        <div ng-show="authData.loggedIn">
+                            <select ng-model="userStatus" ng-options="value for value in statusNames"></select>
+                            <button id="updateButton" ng-click="updateStatus()">Update</button>
+                        </div>
+                        <ul>
+                            <li ng-repeat="(name, user) in milestone.users">
+                                {{ name }} - <span ng-style="{color: user.status_color}">{{ user.status }}</span>
+                            </li>
+                        </ul>
+                    </dz-tab-pane>
+                </dz-tabs>
+            </div>
+        </div>
+    </div>
+
+    <div class="chat-frame">
+        <div class="chat-box">
+            <div class="chat-stream">
+                <div class="chat" ng-repeat="(id, chat) in milestone.chat_stream">
+                    <h1><em>{{ chat.user }}</em></h1>
+                    <p>{{ chat.msg }}</p>
+                    <button ng-click="pinPost(chat)" ng-disabled="chat.pinned"><i class="ra-icon-pushpin"></i></button>
+                </div>
+            </div>
+
+            <div class="chat-input">
+                <div class="input-wrapper">
+                    <input type="text" ng-model="message" ng-enter="sendChat()" />
+                </div>
+                <button ng-click="sendChat()">Send</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- <div id="milestone">
+     <div id="milestoneTitleContainer">
+         <h1>{{ milestone.title }}</h1>
+     </div>
+     <div id="info">
+         <div id="details">
+             <ul class="nav nav-tabs" id="myTab">
+                <li><a href="#desc" data-toggle="tab">Description</a></li>
+                <li><a href="#pinned" data-toggle="tab">Pinned Posts</a></li>
+                <li  class="active"><a href="#resources" data-toggle="tab">Resources</a></li>
+            </ul>
+             <div class="tab-content">
+                <div class="tab-pane active" id="desc">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
+                        dolor, quis ullamcorper ligula sodales.
+                    </p>
+                </div>
+                <div class="tab-pane" id="pinned">
+                    <ul class="chat">
+                        <li class="left clearfix">
+                            <i class="ra-icon-pushpin pull-left"></i>
+                            <div class="chat-body clearfix">
+                                <div class="header">
+                                    <strong class="primary-font">Jack Sparrow</strong> <small class="pull-right text-muted">
+                                        <span class="glyphicon glyphicon-time"></span>12 mins ago</small>
+                                </div>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
+                                    dolor, quis ullamcorper ligula sodales.
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="tab-pane" id="resources">
+                    <ul>
+                        <li>
+                            <a href="http://www.stanford.edu/class/cs110/handouts/09-Assignment-6-http-proxy.pdf" target="_blank">Assignment 6: HTTP Web Proxy and Cache</a>
+                        </li>
+                        <li>
+                            <a href="http://www.stanford.edu/class/cs110/lectures/23-principles-of-system-design.html#(1)" target="_blank">Slides: Principles of System Design</a>
+                        </li>
+                    </ul>
+                    <span class="input-group-btn">
+                        <button class="btn btn-warning btn-sm" id="btn-chat">
+                            Upload</button>
+                    </span>
+                </div>
+            </div>
+         </div>
+     </div>
+     <div id="chat">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Chat</div>
+            <div class="panel-body">
+                <ul class="chat">
+                    <li class="left clearfix">
+                        <i class="ra-icon-pushpin pull-left"></i>
+                        <div class="chat-body clearfix">
+                            <div class="header">
+                                <strong class="primary-font">Jack Sparrow</strong> <small class="pull-right text-muted">
+                                    <span class="glyphicon glyphicon-time"></span>12 mins ago</small>
+                            </div>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
+                                dolor, quis ullamcorper ligula sodales.
+                            </p>
+                        </div>
+                    </li>
+                    <li class="right clearfix">                                
+                        <i class="ra-icon-pushpin pull-right"></i>
+                        <div class="chat-body clearfix">
+                            <div class="header">
+                                <small class=" text-muted"><span class="glyphicon glyphicon-time"></span>13 mins ago</small>
+                                <strong class="pull-right primary-font">Bhaumik Patel</strong>
+                            </div>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
+                                dolor, quis ullamcorper ligula sodales.
+                            </p>
+                        </div>
+                    </li>
+                    <li class="left clearfix">
+                        <i class="ra-icon-pushpin pull-left"></i>
+                        <div class="chat-body clearfix">
+                            <div class="header">
+                                <strong class="primary-font">Jack Sparrow</strong> <small class="pull-right text-muted">
+                                    <span class="glyphicon glyphicon-time"></span>14 mins ago</small>
+                            </div>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
+                                dolor, quis ullamcorper ligula sodales.
+                            </p>
+                        </div>
+                    </li>
+                    <li class="right clearfix">
+                        <i class="ra-icon-pushpin pull-right"></i>
+                        <div class="chat-body clearfix">
+                            <div class="header">
+                                <small class=" text-muted"><span class="glyphicon glyphicon-time"></span>15 mins ago</small>
+                                <strong class="pull-right primary-font">Bhaumik Patel</strong>
+                            </div>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
+                                dolor, quis ullamcorper ligula sodales.
+                            </p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="panel-footer">
+                <div class="input-group">
+                    <input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here...">
+                    <span class="input-group-btn">
+                        <button class="btn btn-warning btn-sm" id="btn-chat">
+                            Send</button>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->

@@ -1,0 +1,343 @@
+#milestone {
+    width: 100%;
+    height: 100%;
+
+    .details-frame {
+        width: 50%;
+        height: 100%;
+
+        float: left;
+        padding: 20px;
+        padding-right: 10px;
+
+        .details-content {
+            // background-color: $silver;
+        }
+
+        .milestone-title {
+            padding: 12px;
+            font-size: $font-size-base * 1.6;
+            // color: $white;
+        }
+
+        dz-tabs {
+            display: block;
+            width: 100%;
+            height: 100%;
+
+            .tabs-wrapper {
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+
+                .tabs-box {
+                    width: 100%;
+
+                    .tab {
+                        display: inline-block;
+                        color: $black;
+
+                        text-align: center;
+
+                        a {
+                            display: block;
+
+                            padding: 8px;
+
+                            text-decoration: none;
+                            color: $black;
+                        }
+
+                        &.active {
+                            background-color: $white;
+                            color: $black;
+                            a { color: $black; }
+                        }
+                    }
+                }
+
+                .tab-content {
+                    width: 100%;
+                    height: 100%;
+
+                    background-color: $white;
+
+                    .tab-pane {
+                        width: 100%;
+                        height: 100%;
+
+                        padding: 12px;
+                    }
+                }
+            }
+        }
+    }
+
+    .chat-frame {
+        width: 50%;
+        height: 100%;
+
+        float: left;
+
+        padding: 20px;
+        padding-left: 10px;
+
+        .chat-box {
+            width: 100%;
+            height: 100%;
+
+            position: relative;
+
+            background-color: $silver;
+
+            .chat-stream {
+                width: 100%;
+                height: 100%;
+
+                padding: 8px;
+                padding-bottom: 108px;
+
+                overflow-y: auto;
+                overflow-x: hidden;
+
+                .chat {
+                    width: 100%;
+                    padding: 10px;
+                    padding-right: 42px;
+                    margin-bottom: 8px;
+                    position: relative;
+
+                    background-color: $white;
+
+                    h1 {
+                        color: $concrete;
+                        font-size: $font-size-base * 0.6;
+                        margin-bottom: 6px;
+                    }
+
+                    p {
+
+                    }
+
+                    button {
+                        min-width: 0px;
+                        width: 32px;
+                        height: 100%;
+
+                        padding: 0px;
+                        border-radius: 0px;
+
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+                        bottom: 0;
+
+                        &:hover {
+                            background-color: $clouds;
+                        }
+
+                        &[disabled] {
+                            color: $silver;
+                            background-color: $asbestos;
+
+                            &:hover {
+                                background-color: $asbestos;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .chat-input {
+                height: 46px;
+
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+
+                .input-wrapper {
+                    width: 100%;
+                    padding-right: 100px;
+
+                    input {
+                        border-radius: 0;
+                    }
+                }
+
+                button {
+                    width: 100px;
+                    height: 46px;
+
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+
+                    border-radius: 0;
+
+                    color: $white;
+                    background-color: $emerald;
+                }
+            }
+        }
+    }
+}
+
+#updateButton {
+    background-color: $emerald;
+}
+
+
+// #milestone {
+//     position: absolute;
+//     top: 0px;
+//     left: 0px;
+//     width: 100%;
+//     height: 100%;
+// }
+
+// #info {
+//     position: absolute;
+//     display: block;
+//     border: 1px solid #428bca;
+//     float: left;
+//     width: 35%;
+//     height: 80%;
+//     left: 10%;
+//     top: 10%;
+//     border-radius: 4px;
+
+// }
+
+// #milestoneTitleContainer {
+//     width:100%;
+//     height:100px;
+//     padding: 15px;
+//     position:absolute;
+//     left:10%;
+
+//     margin-bottom: 20px;        
+// }
+
+// #milestoneTitleContainer h1 {
+//     font-size: 36px;
+//     margin-top: 20px;
+//     margin-bottom: 10px;
+//     font-family: inherit;
+//     font-weight: 500;
+//     line-height: 1.1;
+//     color: #333;
+//     text-align: left;
+// }
+
+// #chat {
+//     position: absolute;
+//     display: block;
+//     float: left;
+//     width: 35%;
+//     height: 80%;
+//     left: 55%;
+//     top: 10%;
+// }
+
+// .chat
+// {
+//     list-style: none;
+//     margin: 0;
+//     padding: 0;
+// }
+
+// .chat li
+// {
+//     margin-bottom: 10px;
+//     padding-bottom: 5px;
+//     border-bottom: 1px dotted #B3A9A9;
+// }
+
+// .chat li.left .chat-body
+// {
+//     margin-left: 60px;
+// }
+
+// .chat li.right .chat-body
+// {
+//     margin-right: 60px;
+// }
+
+
+// .chat li .chat-body p
+// {
+//     margin: 0;
+//     color: #777777;
+// }
+
+// .panel .slidedown .glyphicon, .chat .glyphicon
+// {
+//     margin-right: 5px;
+// }
+
+// .panel {
+//     margin-bottom: 20px;
+//     background-color: #fff;
+//     border: 1px solid transparent;
+//     border-radius: 4px;
+//     -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.05);
+//     box-shadow: 0 1px 1px rgba(0,0,0,0.05);
+// }
+
+// .panel-primary {
+//     height:100%;
+//     border-color: #428bca;
+// }
+
+// .panel-body
+// {
+//     overflow-y: scroll;
+// }
+
+// .panel-footer {
+//     position: absolute;
+//     bottom: 2px;
+//     right: 2px;
+//     left: 2px;
+// }
+
+// input {
+//     margin:0;
+// }
+
+// .tab-pane p {
+//     color: #777777;
+//     font-size: 14px;
+// }
+
+// #resources ul {
+//     list-style: none;
+//     padding: 0px;
+// }
+
+
+// .tab-pane {
+//     padding: 18px;
+//     overflow-y: scroll;
+// }
+
+
+// ::-webkit-scrollbar-track
+// {
+//     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+//     background-color: #F5F5F5;
+// }
+
+
+// ::-webkit-scrollbar
+// {
+//     width: 12px;
+//     background-color: #F5F5F5;
+// }
+
+// ::-webkit-scrollbar-thumb
+// {
+//     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+//     background-color: #555;
+// }

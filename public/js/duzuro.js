@@ -151,11 +151,12 @@ duzuroApp.controller('ProjectMilestoneCtrl', ['$scope', '$stateParams', 'Project
 		$scope.authData = Authentication.getAuthData();
 
 		$scope.statusNames = ["just started", "working on it", "stuck", "done"];
-		$scope.userStatus = $scope.statusNames[0];
+		$scope.userStatusObj = {
+		};
 
 		$scope.updateStatus = function() {
 			$scope.milestone.$child('users/' + $scope.authData.username).$set({
-				status: $scope.userStatus
+				status: $scope.userStatusObj.userStatus
 			});
 		};
 
@@ -169,13 +170,6 @@ duzuroApp.controller('ProjectMilestoneCtrl', ['$scope', '$stateParams', 'Project
 
 				$scope.message = '';
 			}
-		};
-
-		$scope.pinPost = function(chat) {
-			$scope.milestone.$child('pinned_posts').$add({
-				msg: chat.msg,
-				user: chat.user
-			});
 		};
 
 		$scope.milestone.$child('chat_stream').$on('child_added', function() {

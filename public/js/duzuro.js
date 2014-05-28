@@ -116,12 +116,32 @@ duzuroApp.controller('ProjectTimelineCtrl',['$scope', 'PageState', 'Projects',
 		$scope.statusName = function(status) {
 			var array = ["Just Started", "Working on it!", "Stuck!", "DONE!!!"];
 			return array[status];
-		}
+		};
 
 		$scope.statusColor = function(status) {
 			var colors = ["yellow", "green", "red", "blue"];
 			return colors[status];
-		}
+		};
+
+		$scope.addMilestone = function() {
+
+			$scope.project.$child('milestones').$add({
+				title: $scope.milestoneTitle
+			});
+
+			$scope.milestoneTitle = '';
+			$scope.showMilestoneInput = false;
+		};
+
+		$scope.project.$child('milestones').$on('child_added', function() {
+			var el = $(".project-timeline")[0];
+			// $(".project-timeline").scrollLeft(el.scrollWidth - el.clientWidth);
+
+			$(".project-timeline").animate({
+				scrollLeft: el.scrollWidth - el.clientWidth
+			}, 'fast');
+
+		});
 	}
 ]); 
 
@@ -157,6 +177,14 @@ duzuroApp.controller('ProjectMilestoneCtrl', ['$scope', '$stateParams', 'Project
 				user: chat.user
 			});
 		};
+
+		$scope.milestone.$child('chat_stream').$on('child_added', function() {
+			var el = $(".chat-stream")[0];
+
+			$(".chat-stream").animate({
+				scrollTop: el.scrollHeight - el.clientHeight
+			}, 'fast');
+		});
 	}
 ]);
 

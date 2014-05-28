@@ -19,6 +19,41 @@
         }
     }
 
+    .project-toolbar {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+
+        ul {
+
+
+            li {
+                display: inline-block;
+            }
+        }
+
+        button {
+            min-width: 0;
+            background-color: $clouds;
+
+            opacity: 0.6;
+
+            transition: all 0.25s;
+
+            span {
+                display: none;
+            }
+
+            &:hover {
+                opacity: 1.0;
+
+                span {
+                    display: inline;
+                }
+            }
+        }
+    }
+
     .project-timeline {
         width: 100%;
         // height: 100%;

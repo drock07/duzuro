@@ -2591,6 +2591,41 @@ a {
   text-align: right;
 }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_project_selection\.scss}line{font-family:\000031}}
+#projectSelectionFrame {
+  text-align: center;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_project_selection\.scss}line{font-family:\000038}}
+#projectSelectionFrame ul li a {
+  display: block;
+  margin: 20px;
+  padding: 15px;
+  color: #fefefe;
+  background-color: #bdc3c7;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_project_selection\.scss}line{font-family:\0000317}}
+#projectSelectionFrame ul li .new-project-box {
+  width: 100%;
+  margin: 20px;
+  padding: 15px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_project_selection\.scss}line{font-family:\0000322}}
+#projectSelectionFrame ul li .new-project-box .input-wrapper {
+  padding-right: 80px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_project_selection\.scss}line{font-family:\0000325}}
+#projectSelectionFrame ul li .new-project-box .input-wrapper input {
+  border: 1px solid #bdc3c7;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_project_selection\.scss}line{font-family:\0000330}}
+#projectSelectionFrame ul li .new-project-box button {
+  min-width: 0;
+  width: 80px;
+  float: right;
+  color: #fefefe;
+  background-color: #2ecc71;
+}
+
 @media -sass-debug-info{filename{font-family:file\:\/\/R\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_project_timeline\.scss}line{font-family:\000031}}
 #projectTimeline {
   width: 100%;

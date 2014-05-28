@@ -31,10 +31,16 @@ duzuroApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
 				]
 			})
 
-			// milestones - timeline view (fullscreen)
+			.state('projects', {
+				url: '/',
+				templateUrl: '/partials/project-selection.html',
+				controller: 'ProjectSelectionCtrl'
+			})
+
+			// project view
 
 			.state('project', {
-				url: '/',
+				url: '/project/:projectId',
 				templateUrl: '/partials/project-timeline.html',
 				controller: 'ProjectTimelineCtrl'
 			})
@@ -51,7 +57,7 @@ duzuroApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
 			})
 
 			.state('project.open.milestone', {
-				url: 'milestone/:milestoneId',
+				url: '/milestone/:milestoneId',
 				templateUrl: '/partials/milestone.html',
 				controller: 'ProjectMilestoneCtrl'
 			});
@@ -106,12 +112,26 @@ duzuroApp.controller('HeaderCtrl', ['$scope', 'Authentication',
 	}
 ]);
 
-duzuroApp.controller('ProjectTimelineCtrl',['$scope', 'PageState', 'Projects',
-	function($scope, PageState, Projects) {
+duzuroApp.controller('ProjectSelectionCtrl', ['$scope', 'Projects',
+	function($scope, Projects) {
+		$scope.projects = Projects.getProjects();
+
+		$scope.addProject = function() {
+			$scope.projects.$add({
+				title: $scope.projectTitle
+			});
+
+			$scope.projectTitle = '';
+		};
+	}
+]);
+
+duzuroApp.controller('ProjectTimelineCtrl',['$scope', '$stateParams', 'PageState', 'Projects',
+	function($scope, $stateParams, PageState, Projects) {
 
 		$scope.pageState = PageState.getState();
 
-		$scope.project = Projects.getProject('testProject');
+		$scope.project = Projects.getProject($stateParams['projectId']);
 
 		$scope.statusName = function(status) {
 			var array = ["Just Started", "Working on it!", "Stuck!", "DONE!!!"];
@@ -147,7 +167,7 @@ duzuroApp.controller('ProjectTimelineCtrl',['$scope', 'PageState', 'Projects',
 
 duzuroApp.controller('ProjectMilestoneCtrl', ['$scope', '$stateParams', 'Projects', 'Authentication',
 	function($scope, $stateParams, Projects, Authentication) {
-		$scope.milestone = Projects.getMilestone($stateParams['milestoneId']);
+		$scope.milestone = Projects.getMilestone($stateParams['projectId'], $stateParams['milestoneId']);
 		$scope.authData = Authentication.getAuthData();
 
 		$scope.statusNames = ["just started", "working on it", "stuck", "done"];
@@ -204,16 +224,20 @@ duzuroServices.factory('Projects', ['$firebase',
 		}
 
 		return {
+			getProjects: function() {
+				return fb_projects;
+			},
+
 			getProject: function(id) {
 				return fb_projects.$child(id);
 			},
 
-			getMilestones: function() {
-				return fb_projects.$child('testProject/milestones');
+			getMilestones: function(pid) {
+				return fb_projects.$child(pid + '/milestones');
 			},
 
-			getMilestone: function(id) {
-				return fb_projects.$child('testProject/milestones/' + id);
+			getMilestone: function(pid, mid) {
+				return fb_projects.$child(pid + '/milestones/' + mid);
 			},
 
 			saveChat: function() {

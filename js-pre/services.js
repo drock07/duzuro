@@ -18,16 +18,20 @@ duzuroServices.factory('Projects', ['$firebase',
 		}
 
 		return {
+			getProjects: function() {
+				return fb_projects;
+			},
+
 			getProject: function(id) {
 				return fb_projects.$child(id);
 			},
 
-			getMilestones: function() {
-				return fb_projects.$child('testProject/milestones');
+			getMilestones: function(pid) {
+				return fb_projects.$child(pid + '/milestones');
 			},
 
-			getMilestone: function(id) {
-				return fb_projects.$child('testProject/milestones/' + id);
+			getMilestone: function(pid, mid) {
+				return fb_projects.$child(pid + '/milestones/' + mid);
 			},
 
 			saveChat: function() {

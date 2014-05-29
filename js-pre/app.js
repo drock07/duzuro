@@ -170,9 +170,9 @@ duzuroApp.controller('ProjectMilestoneCtrl', ['$scope', '$stateParams', 'Project
 		$scope.milestone = Projects.getMilestone($stateParams['projectId'], $stateParams['milestoneId']);
 		$scope.authData = Authentication.getAuthData();
 
-		$scope.statusNames = ["just started", "working on it", "stuck", "done"];
-		$scope.userStatusObj = {
-		};
+		$scope.statusNames = ["starting", "in-progress", "stuck", "done"];
+
+		$scope.userStatusObj = {};
 
 		$scope.updateStatus = function() {
 			$scope.milestone.$child('users/' + $scope.authData.username).$set({
@@ -199,6 +199,8 @@ duzuroApp.controller('ProjectMilestoneCtrl', ['$scope', '$stateParams', 'Project
 				scrollTop: el.scrollHeight - el.clientHeight
 			}, 'fast');
 		});
+
+
 	}
 ]);
 

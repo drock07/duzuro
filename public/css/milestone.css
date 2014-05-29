@@ -1,0 +1,15 @@
+.done {
+	color: blue;
+}
+
+.in-progress {
+	color: green;
+}
+
+.stuck {
+	color: red;
+}
+
+.starting {
+	color: yellow;
+}

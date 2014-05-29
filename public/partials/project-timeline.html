@@ -5,6 +5,13 @@
 			<h1>{{ project.title }}</h1>
 		</div>
 
+		<div class="project-toolbar">
+			<ul>
+				<li><button ng-click="showMilestoneInput = true" ng-hide="showMilestoneInput"><span>Add Milestone</span> <i class="ra-icon-plus"></i></button></li>
+				<li><input ng-show="showMilestoneInput" type="text" placeholder="Milestone title..." ng-model="milestoneTitle" ng-enter="addMilestone()" /></li>
+			</ul>
+		</div>
+
 		<div class="project-timeline">
 
 			<ul>

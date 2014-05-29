@@ -1,0 +1,14 @@
+<div id="projectSelectionFrame">
+	<ul>
+		<li ng-repeat="(id, project) in projects"><a ui-sref="project({projectId: id})">{{ project.title }}</a></li>
+		<li>
+			<div class="new-project-box">
+				<button ng-click="addProject()">Add</button>
+				<div class="input-wrapper">
+					<input type="text" ng-model="projectTitle" ng-enter="addProject()" placeholder="Project title..." />
+				</div>
+			</div>
+		</li>
+	</ul>
+
+</div>

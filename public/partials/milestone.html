@@ -9,18 +9,11 @@
                     <dz-tab-pane title="Summary">
                         <p>{{ milestone.description }}</p>
                     </dz-tab-pane>
-                    <dz-tab-pane title="Pinned Posts">
-                        <ul>
-                            <li ng-repeat="(id, post) in milestone.pinned_posts">
-                                <h1><em>{{ post.user }}</em></h1>
-                                <p>{{ post.msg }}</p>
-                            </li>
-                        </ul>
-                    </dz-tab-pane>
                     <dz-tab-pane title="User Progress">
                         <div ng-show="authData.loggedIn">
-                            <select ng-model="userStatus" ng-options="value for value in statusNames"></select>
-                            <button id="updateButton" ng-click="updateStatus()">Update</button>
+                            <select ng-model="userStatusObj.userStatus" ng-options="value for value in statusNames" ng-change="updateStatus()">
+                                <option value="">&gt;-- choose status --&lt;</option>
+                            </select>
                         </div>
                         <ul>
                             <li ng-repeat="(name, user) in milestone.users">
@@ -39,7 +32,6 @@
                 <div class="chat" ng-repeat="(id, chat) in milestone.chat_stream">
                     <h1><em>{{ chat.user }}</em></h1>
                     <p>{{ chat.msg }}</p>
-                    <button ng-click="pinPost(chat)" ng-disabled="chat.pinned"><i class="ra-icon-pushpin"></i></button>
                 </div>
             </div>
 

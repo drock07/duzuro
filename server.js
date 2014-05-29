@@ -1,5 +1,8 @@
 var express = require('express');
 
+var request = require('request'),  
+    jsdom = require('jsdom');
+
 var app = express();
 
 

@@ -83,6 +83,19 @@ duzuroApp.factory('PageState', [
 	}
 ]);
 
+duzuroApp.filter('addAnchors', ['$sce',
+	function($sce) {
+		return function(str) {
+			return $sce.trustAsHtml(str.
+					replace(/</g, '&lt;').
+                    replace(/>/g, '&gt;').
+                    replace(/(https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}\b[-a-zA-Z0-9@:%_\+.~#?&//=]*)/, '<a href="$1">$1</a>')
+
+			);
+		};
+	}
+]);
+
 duzuroApp.run(['$rootScope', '$state', 'Authentication',
 	function($rootScope, $state, Authentication) {
 
@@ -170,9 +183,18 @@ duzuroApp.controller('ProjectMilestoneCtrl', ['$scope', '$stateParams', 'Project
 		$scope.milestone = Projects.getMilestone($stateParams['projectId'], $stateParams['milestoneId']);
 		$scope.authData = Authentication.getAuthData();
 
-		$scope.statusNames = ["starting", "in-progress", "stuck", "done"];
+		$scope.statusNames = ["just started", "working on it", "stuck", "done"];
 
 		$scope.userStatusObj = {};
+
+		$scope.getStatusColor = function(status) {
+			return {
+				"just started": "#3498db",
+				"working on it": "#f1c40f",
+				"stuck": "#e74c3c",
+				"done": "#2ecc71"
+			}[status];
+		};
 
 		$scope.updateStatus = function() {
 			$scope.milestone.$child('users/' + $scope.authData.username).$set({
@@ -183,6 +205,7 @@ duzuroApp.controller('ProjectMilestoneCtrl', ['$scope', '$stateParams', 'Project
 		$scope.sendChat = function() {
 
 			if(Authentication.checkLoggedIn()) {
+
 				$scope.milestone.$child('chat_stream').$add({
 					msg: $scope.message,
 					user: $scope.authData.username

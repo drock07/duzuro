@@ -18,9 +18,9 @@
                         </div>
                         <ul>
                             <li ng-repeat="(name, user) in milestone.users">
-                            {{name}} <span class="ra-icon-user2 {{user.status}}" title="{{ user.status }}"></span>
+                            {{name}} <i class="ra-icon-user2" ng-style="{'color': getStatusColor(user.status)}" title="{{ user.status }}"></i>
 
-                            <span class="{{user.status}}">{{ user.status }}</span> 
+                            <span ng-style="{'color': getStatusColor(user.status)}">{{ user.status }}</span> 
                             </li>
                         </ul>
                     </dz-tab-pane>
@@ -34,7 +34,7 @@
             <div class="chat-stream">
                 <div class="chat" ng-repeat="(id, chat) in milestone.chat_stream">
                     <h1><em>{{ chat.user }}</em></h1>
-                    <p>{{ chat.msg }}</p>
+                    <p ng-bind-html="chat.msg | addAnchors"></p>
                 </div>
             </div>
 

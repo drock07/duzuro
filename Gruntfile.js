@@ -57,8 +57,7 @@ module.exports = function(grunt) {
 					'./js-libs/ng/angular/*.js', 
 					'./js-libs/ng/angular-ui-router/*.js',
 					'./js-libs/ng/angular-animate/*.js',
-					'./js-libs/ng/angularfire/angularfire.min.js',
-					'./js-libs/ng/angular-sanitize/angular-sanitize.min.js'
+					'./js-libs/ng/angularfire/angularfire.min.js'
 				],
 				dest: './public/js/angular.min.js'
 			},
@@ -72,17 +71,6 @@ module.exports = function(grunt) {
 					'./js-libs/firebase/firebase-simple-login/firebase-simple-login.js'
 				],
 				dest: './public/js/firebase.min.js'
-			},
-			videogular: {
-				src: [
-					'./js-libs/videogular/videogular/videogular.js',
-					'./js-libs/videogular/videogular-controls/controls.min.js',
-					'./js-libs/videogular/videogular-buffering/buffering.min.js',
-					'./js-libs/videogular/videogular-overlay-play/overlay-play.min.js',
-					'./js-libs/videogular/videogular-poster/poster.min.js'
-
-				],
-				dest: './public/js/videogular.min.js'
 			}
 		},
 
@@ -183,7 +171,6 @@ module.exports = function(grunt) {
 		'bower:install', 
 		'concat:firebase',
 		'concat:angular', 
-		'concat:jquery',
-		'concat:videogular'
+		'concat:jquery'
 	]);
 };

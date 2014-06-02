@@ -18,8 +18,7 @@
     "angular": "~1.2.16",
     "angular-ui-router": "~0.2.10",
     "angular-animate": "~1.2.16",
-    "jquery": "~2.1.1",
-    "angular-sanitize": "~1.2.16"
+    "jquery": "~2.1.1"
   },
   "exportsOverride": {
     "angular": {
@@ -42,21 +41,6 @@
     },
     "jquery": {
       "jquery": "dist/jquery.min.js"
-    },
-    "angular-sanitize": {
-      "ng": "angular-sanitize.min.js"
-    },
-    "videogular-controls": {
-      "videogular": "controls.min.js"
-    },
-    "videogular-buffering": {
-      "videogular": "buffering.min.js"
-    },
-    "videogular-overlay-play": {
-      "videogular": "overlay-play.min.js"
-    },
-    "videogular-poster": {
-      "videogular": "poster.min.js"
     }
   }
 }

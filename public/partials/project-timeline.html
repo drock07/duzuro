@@ -1,31 +1,37 @@
-<div id="topFrameWrapper" ui-view ng-class="{expanded: pageState.expanded}"></div>
-<div id="bottomFrameWrapper" ng-class="{expanded: pageState.expanded}">
-	<div id="projectTimeline">
-		<div class="project-title" ng-hide="pageState.expanded">
-			<h1>{{ project.title }}</h1>
+<div class="container">
+	<div id="milestonesFrame">
+		
+		<div class="row">
+			<div class="col-md-12 text-center">
+				<h1>{{ project.title }}</h1>
+			</div>
 		</div>
 
-		<div class="project-toolbar">
+		<div ng-repeat="(id, milestone) in project.milestones" class="row">
+			<div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 milestone-wrapper">
+				<a class="milestone" ui-sref="project.milestone({milestoneId: id})">
+					{{ milestone.title }}
+					<span><i class="icon-arrow-right4"></i></span>
+				</a>
+				<div class="milestone-info">
+					<ul>
+						<li>
+							{{ milestone.num_active_users || 0 }} <i class="icon-user"></i>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+
+
+
+	<!-- 	<div class="project-toolbar">
 			<ul>
 				<li><button ng-click="showMilestoneInput = true" ng-hide="showMilestoneInput"><span>Add Milestone</span> <i class="ra-icon-plus"></i></button></li>
 				<li><input ng-show="showMilestoneInput" type="text" placeholder="Milestone title..." ng-model="milestoneTitle" ng-enter="addMilestone()" /></li>
 			</ul>
-		</div>
-
-		<div class="project-timeline">
-
-			<ul>
-				<li class="milestone" ng-repeat="(id, m) in project.milestones">
-					<a ui-sref="project.open.milestone({milestoneId: id})">
-						<div class="milestone-title">{{ m.title }}</div>
-						<div class="dots" ng-hide="$last">
-							<div class="dot"></div>
-							<div class="dot"></div>
-							<div class="dot"></div>
-						</div>
-					</a>
-				</li>
-			</ul>
-		</div>
-	</div>
-</div>
+		</div> -->

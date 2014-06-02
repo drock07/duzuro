@@ -2,153 +2,96 @@
     width: 100%;
     height: 100%;
 
-    .details-frame {
-        width: 50%;
-        height: 100%;
+    position: relative;
 
-        float: left;
-        padding: 20px;
-        padding-right: 10px;
+    overflow: hidden;
 
-        .details-content {
-            // background-color: $silver;
+    .milestone-title {
+
+        height: 70px;
+
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+
+        h1 {
+            margin: 20px 26px;
+            font-size: 28px;
         }
 
-        .milestone-title {
-            padding: 12px;
-            font-size: $font-size-base * 1.6;
-            // color: $white;
-        }
-
-        dz-tabs {
-            display: block;
-            width: 100%;
-            height: 100%;
-
-            .tabs-wrapper {
-                width: 100%;
-                height: 100%;
-                overflow: hidden;
-
-                .tabs-box {
-                    width: 100%;
-
-                    .tab {
-                        display: inline-block;
-                        color: $black;
-
-                        text-align: center;
-
-                        a {
-                            display: block;
-
-                            padding: 8px;
-
-                            text-decoration: none;
-                            color: $black;
-                        }
-
-                        &.active {
-                            background-color: $white;
-                            color: $black;
-                            a { color: $black; }
-                        }
-                    }
-                }
-
-                .tab-content {
-                    width: 100%;
-                    height: 100%;
-
-                    background-color: $white;
-
-                    .tab-pane {
-                        width: 100%;
-                        height: 100%;
-
-                        padding: 12px;
-                    }
-                }
-            }
+        h4 {
+            margin: 26px 10px;
+            font-size: 18px;
         }
     }
 
-    .chat-frame {
-        width: 50%;
+    .milestone-content {
+        width: 100%;
         height: 100%;
 
-        float: left;
+        padding-top: 70px;
 
-        padding: 20px;
-        padding-left: 10px;
+        .users-pane {
+            padding: 15px;
 
-        .chat-box {
-            width: 100%;
-            height: 100%;
-
-            position: relative;
-
-            background-color: $silver;
-
-            .chat-stream {
+            ul {
                 width: 100%;
-                height: 100%;
+                max-width: 500px;
+                list-style: none;
+                margin: auto;
+                padding: 0;
 
-                padding: 8px;
-                padding-bottom: 108px;
-
-                overflow-y: auto;
-                overflow-x: hidden;
-
-                .chat {
-                    width: 100%;
-                    padding: 10px;
-                    // padding-right: 42px;
-                    margin-bottom: 8px;
-                    position: relative;
+                li {
+                    display: inline-block;
+                    padding: 8px;
 
                     background-color: $white;
+                }
+            }
 
-                    h1 {
-                        color: $concrete;
-                        font-size: $font-size-base * 0.6;
-                        margin-bottom: 6px;
-                    }
+        }
 
-                    p {
-                        a {
-                            color: $peter-river;
-                        }
-                    }
+        .progress-pane {
 
-                    button {
-                        min-width: 0px;
-                        width: 32px;
-                        height: 100%;
+            padding: 15px;
 
-                        padding: 0px;
-                        border-radius: 0px;
+            .status-chooser {
+                width: 100%;
 
-                        position: absolute;
-                        top: 0;
-                        right: 0;
-                        bottom: 0;
+                ul {
+                    width: 100%;
+                    list-style: none;
+                    margin: 0;
+                    padding: 0;
 
-                        &:hover {
-                            background-color: $clouds;
-                        }
+                    text-align: center;
 
-                        &[disabled] {
-                            color: $silver;
-                            background-color: $asbestos;
+                    li {
+                        display: inline-block;
+                        margin-right: 10px;
 
-                            &:hover {
-                                background-color: $asbestos;
-                            }
+                        button {
+                            width: 130px;
                         }
                     }
                 }
             }
+
+            ul.user-list {
+                width: 100%;
+                list-style: none;
+                margin: 0;
+                padding: 0;
+
+                li {
+                    display: inline-block;
+                }
+            }
+        }
+
+        .chat-pane {
+            position: relative;
 
             .chat-input {
                 height: 46px;
@@ -181,10 +124,83 @@
                     background-color: $emerald;
                 }
             }
-        }
-    }
-}
 
-#updateButton {
-    background-color: $emerald;
+            .chat-box {
+                width: 100%;
+                height: 100%;
+
+                padding: 8px;
+                padding-bottom: 54px;
+
+                overflow: hidden;
+
+                .chat-stream {
+                    width: 100%;
+                    max-width: 500px;
+                    height: 100%;
+
+                    margin: auto;
+
+                    padding: 0 5px;
+
+                    overflow-y: auto;
+                    overflow-x: hidden;
+
+                    .chat {
+                        // width: 100%;
+                        padding: 10px;
+                        margin-bottom: 8px;
+                        position: relative;
+
+                        background-color: $white;
+
+                        h1 {
+                            color: $concrete;
+                            font-size: $font-size-base * 0.6;
+                            margin: 0;
+                            margin-bottom: 6px;
+                        }
+
+                        p {
+                            margin: 0;
+
+                            a {
+                                color: $peter-river;
+                            }
+                        }
+
+                        button {
+                            min-width: 0px;
+                            width: 32px;
+                            height: 100%;
+
+                            padding: 0px;
+                            border-radius: 0px;
+
+                            position: absolute;
+                            top: 0;
+                            right: 0;
+                            bottom: 0;
+
+                            &:hover {
+                                background-color: $clouds;
+                            }
+
+                            &[disabled] {
+                                color: $silver;
+                                background-color: $asbestos;
+
+                                &:hover {
+                                    background-color: $asbestos;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
+        
+    }
+
 }

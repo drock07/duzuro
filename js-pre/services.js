@@ -18,6 +18,10 @@ duzuroServices.factory('Projects', ['$firebase',
 		}
 
 		return {
+			getBase: function() {
+				return fb_base;
+			},
+
 			getProjects: function() {
 				return fb_projects;
 			},
@@ -53,9 +57,14 @@ duzuroServices.factory('Authentication', ['$firebaseSimpleLogin', '$window',
 	function($firebaseSimpleLogin, $window) {
 		// var loginObject = $firebaseSimpleLogin(new Firebase("https://duzuro.firebaseio.com/"));
 
+		// var authData = {
+		// 	loggedIn: false,
+		// 	username: ''
+		// };
+
 		var authData = {
-			loggedIn: false,
-			username: ''
+			loggedIn: true,
+			username: 'David'
 		};
 
 		return {
@@ -88,7 +97,7 @@ duzuroServices.factory('Authentication', ['$firebaseSimpleLogin', '$window',
 
 			checkLoggedIn: function() {
 				if(!authData.loggedIn) {
-					$window.alert('Must choose a username to complete this action. Check the top of the page.');
+					// $window.alert('Must choose a username to complete this action. Check the top of the page.');
 					return false;
 				} else {
 					return true;
@@ -116,22 +125,26 @@ duzuroServices.directive('dzTabs', function() {
 	return {
 		restrict: 'E',
 		transclude: true,
-		scope: {},
+		scope: {
+
+		},
 		controller: ['$scope', function($scope) {
 			var panes = $scope.panes = [];
 
 			$scope.select = function(pane) {
 				angular.forEach(panes, function(pane) {
-					pane.selected = false;
+					pane.scope.selected = false;
+					pane.el.css("display", "none");
 				});
-				pane.selected = true;
+				pane.scope.selected = true;
+				pane.el.css("display", "block");
 			};
 
-			this.addPane = function(pane) {
+			this.addPane = function(paneObj) {
 				if(panes.length === 0) {
-					$scope.select(pane);
+					$scope.select(paneObj);
 				}
-				panes.push(pane);
+				panes.push(paneObj);
 			};
 		}],
 		templateUrl: '/partials/directives/dzTabs.html'
@@ -144,10 +157,11 @@ duzuroServices.directive('dzTabPane', function() {
 		restrict: 'E',
 		transclude: true,
 		scope: {
-			title: '@'
+			title: '@',
+			paneClass: '@'
 		},
 		link: function(scope, element, attrs, tabsCtrl) {
-			tabsCtrl.addPane(scope);
+			tabsCtrl.addPane({"scope": scope, "el": element});
 		},
 		templateUrl: '/partials/directives/dzTabPane.html'
 	};

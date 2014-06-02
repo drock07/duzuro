@@ -14,25 +14,41 @@ duzuroApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
 
 		$stateProvider
 			// login states
+			// .state('login', {
+			// 	url: '/login',
+			// 	templateUrl: '/partials/login.html',
+			// 	controller: ['$scope', '$state', 'Authentication', 
+			// 		function($scope, $state, Authentication) {
+
+			// 			$scope.onGoogleClick = function() {
+			// 				Authentication.googleLogin().then(function(user) {
+			// 					$state.go('project');
+			// 				}, function(error) {
+
+			// 				});
+			// 			}
+			// 		}
+			// 	]
+			// })
+
 			.state('login', {
-				url: '/login',
+				url: '/',
 				templateUrl: '/partials/login.html',
-				controller: ['$scope', '$state', 'Authentication', 
+				controller: ['$scope', '$state', 'Authentication',
 					function($scope, $state, Authentication) {
 
-						$scope.onGoogleClick = function() {
-							Authentication.googleLogin().then(function(user) {
-								$state.go('project');
-							}, function(error) {
+						$scope.login = function() {
+							Authentication.setUsername($scope.username);
+							$state.go('projects');
+						};
 
-							});
-						}
 					}
 				]
+
 			})
 
 			.state('projects', {
-				url: '/',
+				url: '/projects',
 				templateUrl: '/partials/project-selection.html',
 				controller: 'ProjectSelectionCtrl'
 			})
@@ -40,26 +56,53 @@ duzuroApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
 			// project view
 
 			.state('project', {
+				abstract: true,
 				url: '/project/:projectId',
+				template: '<ui-view/>'
+			})
+
+			.state('project.milestones', {
+				url: '',
 				templateUrl: '/partials/project-timeline.html',
 				controller: 'ProjectTimelineCtrl'
 			})
 
-			.state('project.open', {
-				abstract: true,
-				template: '<ui-view/>',
-				onEnter: ['PageState', function(PageState) {
-					PageState.expand();
-				}],
-				onExit: ['PageState', function(PageState) {
-					PageState.compress();
-				}]
-			})
-
-			.state('project.open.milestone', {
+			.state('project.milestone', {
 				url: '/milestone/:milestoneId',
 				templateUrl: '/partials/milestone.html',
-				controller: 'ProjectMilestoneCtrl'
+				controller: 'ProjectMilestoneCtrl',
+				onEnter: ['$stateParams', 'Projects', 'Authentication',
+					function($stateParams, Projects, Authentication) {
+
+						var milestone = Projects.getMilestone($stateParams['projectId'], $stateParams['milestoneId']);
+						var authData = Authentication.getAuthData();
+
+						var amOnline = Projects.getBase().$child('.info/connected').$getRef();
+						var userRef = milestone.$child('active_users/' + authData.username).$getRef();
+
+						amOnline.on('value', function(snapshot) {
+							if(snapshot.val()) {
+								userRef.onDisconnect().remove();
+								userRef.set(true);
+							}
+						});
+					}
+				],
+				onExit: ['$stateParams', 'Projects', 'Authentication',
+					function($stateParams, Projects, Authentication) {
+						var milestone = Projects.getMilestone($stateParams['projectId'], $stateParams['milestoneId']);
+						var authData = Authentication.getAuthData();
+
+						var amOnline = Projects.getBase().$child('.info/connected').$getRef();
+						var userRef = milestone.$child('active_users/' + authData.username).$getRef();
+
+						amOnline.on('value', function(snapshot) {
+							if(snapshot.val()) {
+								userRef.remove();
+							}
+						});
+					}
+				]
 			});
 	}
 ]);
@@ -86,12 +129,13 @@ duzuroApp.factory('PageState', [
 duzuroApp.filter('addAnchors', ['$sce',
 	function($sce) {
 		return function(str) {
-			return $sce.trustAsHtml(str.
-					replace(/</g, '&lt;').
-                    replace(/>/g, '&gt;').
-                    replace(/(https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}\b[-a-zA-Z0-9@:%_\+.~#?&//=]*)/, '<a href="$1">$1</a>')
-
-			);
+			if(str) {
+				return $sce.trustAsHtml(str.
+						replace(/</g, '&lt;').
+	                    replace(/>/g, '&gt;').
+	                    replace(/(https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}\b[-a-zA-Z0-9@:%_\+.~#?&//=]*)/, '<a href="$1">$1</a>')
+				);
+			}
 		};
 	}
 ]);
@@ -99,14 +143,14 @@ duzuroApp.filter('addAnchors', ['$sce',
 duzuroApp.run(['$rootScope', '$state', 'Authentication',
 	function($rootScope, $state, Authentication) {
 
-		// $rootScope.$on('$stateChangeStart', function(event, to, toParams, from, fromParams) {
+		$rootScope.$on('$stateChangeStart', function(event, to, toParams, from, fromParams) {
 
-		// 	if(to.name !== 'login' && Authentication.currentUser() === null) {
-		// 		// console.log('here');
-		// 		event.preventDefault();
-		// 		$state.go('login');
-		// 	}
-		// });
+			if(to.name !== 'login' && !Authentication.checkLoggedIn()) {
+				// console.log('here');
+				event.preventDefault();
+				$state.go('login');
+			}
+		});
 	}
 ]);
 
@@ -146,6 +190,15 @@ duzuroApp.controller('ProjectTimelineCtrl',['$scope', '$stateParams', 'PageState
 
 		$scope.project = Projects.getProject($stateParams['projectId']);
 
+		$scope.project.$child('milestones').$on('child_added', function(ms) {
+			// console.log(ms);
+			$scope.project.milestones[ms.snapshot.name].num_active_users = 0;
+			$scope.project.$child('milestones/' + ms.snapshot.name + '/active_users').$on('value', function(au) {
+				$scope.project.milestones[ms.snapshot.name].num_active_users = Object.keys(au.snapshot.value).length;
+				// console.log(ms.snapshot.name, 'boom');
+			});
+		});
+
 		$scope.statusName = function(status) {
 			var array = ["Just Started", "Working on it!", "Stuck!", "DONE!!!"];
 			return array[status];
@@ -160,21 +213,27 @@ duzuroApp.controller('ProjectTimelineCtrl',['$scope', '$stateParams', 'PageState
 
 			$scope.project.$child('milestones').$add({
 				title: $scope.milestoneTitle
+			}).then(function(ref) {
+				var el = $("#milestonesFrame")[0];
+
+				$("#milestonesFrame").animate({
+					scrollTop: el.scrollHeight - el.clientHeight
+				}, 'fast');
 			});
 
 			$scope.milestoneTitle = '';
 			$scope.showMilestoneInput = false;
 		};
 
-		$scope.project.$child('milestones').$on('child_added', function() {
-			var el = $(".project-timeline")[0];
-			// $(".project-timeline").scrollLeft(el.scrollWidth - el.clientWidth);
+		// $scope.project.$child('milestones').$on('child_added', function() {
+			// var el = $(".project-timeline")[0];
+			// // $(".project-timeline").scrollLeft(el.scrollWidth - el.clientWidth);
 
-			$(".project-timeline").animate({
-				scrollLeft: el.scrollWidth - el.clientWidth
-			}, 'fast');
+			// $(".project-timeline").animate({
+			// 	scrollLeft: el.scrollWidth - el.clientWidth
+			// }, 'fast');
 
-		});
+		// });
 	}
 ]); 
 
@@ -183,9 +242,17 @@ duzuroApp.controller('ProjectMilestoneCtrl', ['$scope', '$stateParams', 'Project
 		$scope.milestone = Projects.getMilestone($stateParams['projectId'], $stateParams['milestoneId']);
 		$scope.authData = Authentication.getAuthData();
 
-		$scope.statusNames = ["just started", "working on it", "stuck", "done"];
+		$scope.num_active_users = 0;
+		$scope.milestone.$child('active_users').$on('value', function(data) {
+			// console.log(data);
+			$scope.num_active_users = Object.keys(data.snapshot.value).length;
+		});
 
-		$scope.userStatusObj = {};
+		$scope.statusNames = ["just started", "working on it", "stuck", "done"];
+		$scope.statusColors = ["#3498db", "#f1c40f", "#e74c3c", "#2ecc71"];
+
+		// $scope.userStatusObj = {};
+		$scope.chatData = {};
 
 		$scope.getStatusColor = function(status) {
 			return {
@@ -196,9 +263,9 @@ duzuroApp.controller('ProjectMilestoneCtrl', ['$scope', '$stateParams', 'Project
 			}[status];
 		};
 
-		$scope.updateStatus = function() {
+		$scope.updateStatus = function(index) {
 			$scope.milestone.$child('users/' + $scope.authData.username).$set({
-				status: $scope.userStatusObj.userStatus
+				status: index
 			});
 		};
 
@@ -207,21 +274,21 @@ duzuroApp.controller('ProjectMilestoneCtrl', ['$scope', '$stateParams', 'Project
 			if(Authentication.checkLoggedIn()) {
 
 				$scope.milestone.$child('chat_stream').$add({
-					msg: $scope.message,
+					msg: $scope.chatData.message,
 					user: $scope.authData.username
 				});
 
-				$scope.message = '';
+				$scope.chatData.message = '';
 			}
 		};
 
-		$scope.milestone.$child('chat_stream').$on('child_added', function() {
-			var el = $(".chat-stream")[0];
+		// $scope.milestone.$child('chat_stream').$on('child_added', function() {
+		// 	var el = $(".chat-stream")[0];
 
-			$(".chat-stream").animate({
-				scrollTop: el.scrollHeight - el.clientHeight
-			}, 'fast');
-		});
+		// 	$(".chat-stream").animate({
+		// 		scrollTop: el.scrollHeight - el.clientHeight
+		// 	}, 'fast');
+		// });
 
 
 	}

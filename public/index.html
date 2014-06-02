@@ -3,20 +3,30 @@
 <head>
 	<title>Duzuro</title>
 
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+	<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+	<link rel="stylesheet" href="http://i.icomoon.io/public/temp/2a9352864c/Duzuro/style.css">
 	<link rel="stylesheet" type="text/css" href="/css/style.css">
-	<link rel="stylesheet" type="text/css" href="/css/milestone.css">
 </head>
 <body>
 	<header id="header" ng-controller="HeaderCtrl">
-		<div class="login-box" ng-hide="authData.loggedIn">
+		<div style="position: absolute; top: 0; left: 0;">
+			<span class="visible-xs">xs</span>
+			<span class="visible-sm">sm</span>
+			<span class="visible-md">md</span>
+			<span class="visible-lg">lg</span>
+		</div>
+
+		<!-- <div class="login-box" ng-hide="authData.loggedIn">
 			<div class="input-wrapper">
 				<input type="text" ng-model="username" ng-enter="setUsername()" placeholder="Choose username..." />
 			</div>
-			<button ng-click="setUsername()">Submit</button>
+			<button ng-click="setUsername()">Login</button>
 		</div>
-		<div class="account-box">
-			{{ authData.username }}
-		</div>
+		<div ng-show="authData.loggedIn" class="account-box">
+			Hello, {{ authData.username }}.
+		</div> -->
 	</header>
 	<div id="mainViewWrapper">
 		<div id="mainView" ui-view></div>
@@ -25,6 +35,7 @@
 	<script type="text/javascript" src="/js/firebase.min.js"></script>
 	<script type="text/javascript" src="/js/angular.min.js"></script>
 	<script type="text/javascript" src="/js/jquery.min.js"></script>
+	<script type="text/javascript" src="/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="/js/duzuro.js"></script>
 
 	<script type="text/javascript">

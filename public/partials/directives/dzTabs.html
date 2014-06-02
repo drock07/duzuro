@@ -1,8 +1,10 @@
 <div class="tabs-wrapper">
+	<div class="tab-content-wrapper">
+		<div class="tab-content" ng-transclude></div>
+	</div>
 	<ul class="tabs-box">
-		<li class="tab" ng-repeat="pane in panes" ng-class="{active:pane.selected}" ng-style="{width: (100 / panes.length) + '%'}">
-			<a href="" ng-click="select(pane)">{{ pane.title }}</a>
+		<li class="tab" ng-repeat="paneObj in panes" ng-class="{active:paneObj.scope.selected}" ng-style="{width: (100 / panes.length) + '%'}">
+			<a href="" ng-click="select(paneObj)">{{ paneObj.scope.title }}</a>
 		</li>
 	</ul>
-	<div class="tab-content" ng-transclude></div>
 </div>

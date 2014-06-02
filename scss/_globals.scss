@@ -8,17 +8,19 @@ html, body {
 }
 
 body {
-	min-width: 960px;
+	min-width: 350px;
 
 	position: relative;
 	overflow: hidden;
 
 	font-family: 'Open Sans', sans-serif;
-	font-size: $font-size-base;
+	// font-size: $font-size-base;
+
+	background-color: $clouds;
 }
 
 button {
-	min-width: 100px;
+	// min-width: 100px;
 
 	cursor: pointer;
 	border: none;
@@ -27,7 +29,7 @@ button {
 	background-color: $white;
 
 	font-family: 'Open Sans', sans-serif;
-	font-size: $font-size-base;
+	// font-size: $font-size-base;
 	font-weight: bold;
 
 	&:hover {
@@ -89,6 +91,14 @@ a {
 	width: 100%;
 	height: 100%;
 	position: relative;
+}
+
+.scroll-y-auto {
+	overflow-y: auto;
+}
+
+.scroll-y-hidden {
+	overflow-y: hidden;
 }
 
 .dz-table {

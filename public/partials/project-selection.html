@@ -1,14 +1,22 @@
-<div id="projectSelectionFrame">
-	<ul>
-		<li ng-repeat="(id, project) in projects"><a ui-sref="project({projectId: id})">{{ project.title }}</a></li>
-		<li>
-			<div class="new-project-box">
-				<button ng-click="addProject()">Add</button>
-				<div class="input-wrapper">
-					<input type="text" ng-model="projectTitle" ng-enter="addProject()" placeholder="Project title..." />
-				</div>
-			</div>
-		</li>
-	</ul>
+<div class="container">
+	<div id="projectSelectionFrame">
 
+		<div class="row">
+			<div class="col-md-12 text-center">
+				<h1>Projects</h1>
+				<h3>Choose a project.</h3>
+			</div>
+		</div>
+
+		<div ng-repeat="(id, project) in projects" class="row">
+			<div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
+				<a class="project" ui-sref="project.milestones({projectId: id})">
+					{{ project.title }}
+
+					<span><i class="icon-arrow-right4"></i></span>
+				</a>
+			</div>
+		</div>
+
+	</div>
 </div>

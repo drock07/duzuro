@@ -506,14 +506,33 @@ dz-tabs .tabs-wrapper .tab-content-wrapper .tab-content dz-tab-pane .tab-pane {
   background-color: #2ecc71;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_milestone\.scss}line{font-family:\00003128}}
+#milestone .milestone-content .chat-pane .chat-users {
+  height: 26px;
+  position: absolute;
+  bottom: 46px;
+  left: 0;
+  right: 0;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_milestone\.scss}line{font-family:\00003136}}
+#milestone .milestone-content .chat-pane .chat-users ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_milestone\.scss}line{font-family:\00003142}}
+#milestone .milestone-content .chat-pane .chat-users ul li {
+  display: inline-block;
+  margin-right: 4px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_milestone\.scss}line{font-family:\00003149}}
 #milestone .milestone-content .chat-pane .chat-box {
   width: 100%;
   height: 100%;
   padding: 8px;
-  padding-bottom: 54px;
+  padding-bottom: 80px;
   overflow: hidden;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_milestone\.scss}line{font-family:\00003137}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_milestone\.scss}line{font-family:\00003158}}
 #milestone .milestone-content .chat-pane .chat-box .chat-stream {
   width: 100%;
   max-width: 500px;
@@ -523,29 +542,29 @@ dz-tabs .tabs-wrapper .tab-content-wrapper .tab-content dz-tab-pane .tab-pane {
   overflow-y: auto;
   overflow-x: hidden;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_milestone\.scss}line{font-family:\00003149}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_milestone\.scss}line{font-family:\00003170}}
 #milestone .milestone-content .chat-pane .chat-box .chat-stream .chat {
   padding: 10px;
   margin-bottom: 8px;
   position: relative;
   background-color: #fefefe;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_milestone\.scss}line{font-family:\00003157}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_milestone\.scss}line{font-family:\00003178}}
 #milestone .milestone-content .chat-pane .chat-box .chat-stream .chat h1 {
   color: #95a5a6;
   font-size: 13.2px;
   margin: 0;
   margin-bottom: 6px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_milestone\.scss}line{font-family:\00003164}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_milestone\.scss}line{font-family:\00003185}}
 #milestone .milestone-content .chat-pane .chat-box .chat-stream .chat p {
   margin: 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_milestone\.scss}line{font-family:\00003167}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_milestone\.scss}line{font-family:\00003188}}
 #milestone .milestone-content .chat-pane .chat-box .chat-stream .chat p a {
   color: #3498db;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_milestone\.scss}line{font-family:\00003172}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_milestone\.scss}line{font-family:\00003193}}
 #milestone .milestone-content .chat-pane .chat-box .chat-stream .chat button {
   min-width: 0px;
   width: 32px;
@@ -557,16 +576,16 @@ dz-tabs .tabs-wrapper .tab-content-wrapper .tab-content dz-tab-pane .tab-pane {
   right: 0;
   bottom: 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_milestone\.scss}line{font-family:\00003185}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_milestone\.scss}line{font-family:\00003206}}
 #milestone .milestone-content .chat-pane .chat-box .chat-stream .chat button:hover {
   background-color: #ecf0f1;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_milestone\.scss}line{font-family:\00003189}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_milestone\.scss}line{font-family:\00003210}}
 #milestone .milestone-content .chat-pane .chat-box .chat-stream .chat button[disabled] {
   color: #bdc3c7;
   background-color: #7f8c8d;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_milestone\.scss}line{font-family:\00003193}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/David\/Documents\/Developer\/duzuro\/scss\/_milestone\.scss}line{font-family:\00003214}}
 #milestone .milestone-content .chat-pane .chat-box .chat-stream .chat button[disabled]:hover {
   background-color: #7f8c8d;
 }

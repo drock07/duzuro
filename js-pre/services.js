@@ -57,15 +57,15 @@ duzuroServices.factory('Authentication', ['$firebaseSimpleLogin', '$window',
 	function($firebaseSimpleLogin, $window) {
 		// var loginObject = $firebaseSimpleLogin(new Firebase("https://duzuro.firebaseio.com/"));
 
-		// var authData = {
-		// 	loggedIn: false,
-		// 	username: ''
-		// };
-
 		var authData = {
-			loggedIn: true,
-			username: 'David'
+			loggedIn: false,
+			username: ''
 		};
+
+		// var authData = {
+		// 	loggedIn: true,
+		// 	username: 'David'
+		// };
 
 		return {
 			// currentUser: function() {

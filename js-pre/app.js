@@ -83,7 +83,7 @@ duzuroApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
 						amOnline.on('value', function(snapshot) {
 							if(snapshot.val()) {
 								userRef.onDisconnect().remove();
-								userRef.set(true);
+								userRef.set(1);
 							}
 						});
 					}
@@ -110,7 +110,12 @@ duzuroApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
 duzuroApp.factory('PageState', [
 	function() {
 		var state = {
-			expanded: false
+			expanded: false,
+			page_title: 'Duzuro',
+			projects: true,
+			project_milestones: false,
+			project_milestone: false,
+			pid: ''
 		};
 		return {
 			getState: function() {
@@ -121,7 +126,29 @@ duzuroApp.factory('PageState', [
 			},
 			compress: function() {
 				state.expanded = false;
+			},
+
+			setTitle: function(title) {
+				state.page_title = title;
+			},
+			activateProjects: function() {
+				state.projects = true;
+				state.project_milestones = false;
+				state.project_milestone = false;
+			},
+			activateProjectMilestones: function(pid) {
+				state.pid = pid;
+				state.projects = false;
+				state.project_milestones = true;
+				state.project_milestone = false;
+			},
+			activateProjectMilestone: function(pid) {
+				state.pid = pid;
+				state.projects = false;
+				state.project_milestones = false;
+				state.project_milestone = true;
 			}
+
 		};
 	}
 ]);
@@ -154,24 +181,35 @@ duzuroApp.run(['$rootScope', '$state', 'Authentication',
 	}
 ]);
 
-duzuroApp.controller('HeaderCtrl', ['$scope', 'Authentication',
-	function($scope, Authentication) {
+duzuroApp.controller('HeaderCtrl', ['$scope', '$state', '$stateParams', 'PageState', 'Authentication',
+	function($scope, $state, $stateParams, PageState, Authentication) {
+
+		$scope.pageState = PageState.getState();
+
+		console.log($stateParams);
+
+		$scope.navigate = function(back_state) {
+			$state.go(back_state);
+		};
+
 		// console.log(Authentication.currentUser());
 		// $scope.user = Authentication.currentUser();
 
-		$scope.authData = Authentication.getAuthData();
+		// $scope.authData = Authentication.getAuthData();
 
-		$scope.setUsername = function() {
-			if($scope.username) {
-				Authentication.setUsername($scope.username);
-			}
-		};
+		// $scope.setUsername = function() {
+		// 	if($scope.username) {
+		// 		Authentication.setUsername($scope.username);
+		// 	}
+		// };
 	}
 ]);
 
-duzuroApp.controller('ProjectSelectionCtrl', ['$scope', 'Projects',
-	function($scope, Projects) {
+duzuroApp.controller('ProjectSelectionCtrl', ['$scope', 'PageState', 'Projects',
+	function($scope, PageState, Projects) {
 		$scope.projects = Projects.getProjects();
+
+        PageState.setTitle('Projects');
 
 		$scope.addProject = function() {
 			$scope.projects.$add({
@@ -189,6 +227,13 @@ duzuroApp.controller('ProjectTimelineCtrl',['$scope', '$stateParams', 'PageState
 		$scope.pageState = PageState.getState();
 
 		$scope.project = Projects.getProject($stateParams['projectId']);
+
+		PageState.activateProjectMilestone($stateParams['projectId']);
+
+		$scope.$watch('project.title', function (newValue) {
+	        if(newValue) PageState.setTitle(newValue);
+	    });
+
 
 		$scope.project.$child('milestones').$on('child_added', function(ms) {
 			// console.log(ms);
@@ -237,10 +282,12 @@ duzuroApp.controller('ProjectTimelineCtrl',['$scope', '$stateParams', 'PageState
 	}
 ]); 
 
-duzuroApp.controller('ProjectMilestoneCtrl', ['$scope', '$stateParams', 'Projects', 'Authentication',
-	function($scope, $stateParams, Projects, Authentication) {
+duzuroApp.controller('ProjectMilestoneCtrl', ['$scope', '$stateParams', 'Projects', 'Authentication', 'PageState',
+	function($scope, $stateParams, Projects, Authentication, PageState) {
 		$scope.milestone = Projects.getMilestone($stateParams['projectId'], $stateParams['milestoneId']);
 		$scope.authData = Authentication.getAuthData();
+
+		$scope.myStatus = 1;
 
 		$scope.num_active_users = 0;
 		$scope.milestone.$child('active_users').$on('value', function(data) {
@@ -248,25 +295,44 @@ duzuroApp.controller('ProjectMilestoneCtrl', ['$scope', '$stateParams', 'Project
 			$scope.num_active_users = Object.keys(data.snapshot.value).length;
 		});
 
+		$scope.$watch('milestone.title', function (newValue) {
+	        if(newValue) {	        	
+		        PageState.setTitle(newValue);
+			}
+	    });
+
+
 		$scope.statusNames = ["just started", "working on it", "stuck", "done"];
 		$scope.statusColors = ["#3498db", "#f1c40f", "#e74c3c", "#2ecc71"];
+		$scope.statusIcons = ["icon-neutral", "icon-wondering", "icon-confused", "icon-grin"];
 
+	    $scope.getStatusIcon = function(status) {
+	    	return $scope.statusIcons[status];
+	    };
+
+	    $scope.getStatusColor = function(status) {
+	    	return $scope.statusColors[status];
+	    };
 		// $scope.userStatusObj = {};
 		$scope.chatData = {};
 
-		$scope.getStatusColor = function(status) {
-			return {
-				"just started": "#3498db",
-				"working on it": "#f1c40f",
-				"stuck": "#e74c3c",
-				"done": "#2ecc71"
-			}[status];
+		$scope.openStatus = function() {
+			$scope.statusOpen = true;
 		};
 
+		// $scope.getStatusColor = function(status) {
+		// 	return {
+		// 		"just started": "#3498db",
+		// 		"working on it": "#f1c40f",
+		// 		"stuck": "#e74c3c",
+		// 		"done": "#2ecc71"
+		// 	}[status];
+		// };
+
 		$scope.updateStatus = function(index) {
-			$scope.milestone.$child('users/' + $scope.authData.username).$set({
-				status: index
-			});
+			$scope.milestone.$child('active_users/' + $scope.authData.username).$set(index);
+			$scope.myStatus = index;
+			$scope.statusOpen = false;
 		};
 
 		$scope.sendChat = function() {
@@ -282,13 +348,13 @@ duzuroApp.controller('ProjectMilestoneCtrl', ['$scope', '$stateParams', 'Project
 			}
 		};
 
-		// $scope.milestone.$child('chat_stream').$on('child_added', function() {
-		// 	var el = $(".chat-stream")[0];
+		$scope.milestone.$child('chat_stream').$on('child_added', function() {
+			var el = $(".chat-stream")[0];
 
-		// 	$(".chat-stream").animate({
-		// 		scrollTop: el.scrollHeight - el.clientHeight
-		// 	}, 'fast');
-		// });
+			$(".chat-stream").animate({
+				scrollTop: el.scrollHeight - el.clientHeight
+			}, 'fast');
+		});
 
 
 	}

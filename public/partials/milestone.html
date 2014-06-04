@@ -1,12 +1,53 @@
 <div id="milestone">
 
-    <div class="milestone-title">
+    <!-- <div class="milestone-title">
         <h1 class="hidden-xs hidden-sm">{{ milestone.title }}</h1>
         <h4 class="hidden-md hidden-lg">{{ milestone.title }}</h4>
-    </div>
+    </div> -->
 
-    <div class="milestone-content">
-        <dz-tabs>
+   <!--  <div class="milestone-content"> -->
+        <div class="chat-pane">
+            <div class="chat-box">
+                <div class="chat-stream">
+                    <div class="chat" ng-repeat="(id, chat) in milestone.chat_stream">
+                        <h1><em>{{ chat.user }}</em></h1>
+                        <p ng-bind-html="chat.msg | addAnchors"></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chat-users">
+                <ul>
+                    <li ng-repeat="(name, user) in milestone.active_users">
+                    <i class="icon-user" ng-style="{'color': statusColors[user]}"></i> {{name}} 
+                    </li>
+                </ul>
+            </div>
+
+            <div class="chat-input">
+                <div class="status-wrapper" ng-class="{'status-open': statusOpen}">
+                    <div class="cur-status" ng-click="openStatus()">
+                        <i ng-class="getStatusIcon(myStatus)" ng-style="{'color': getStatusColor(myStatus)}"></i>
+                    </div>
+                    <div class="status-choices">
+                        <div class="fill-space">
+                            <button class="started" ng-click="updateStatus(0)">Just Started</button>
+                            <button class="working" ng-click="updateStatus(1)">Working on it</button>
+                            <button class="stuck" ng-click="updateStatus(2)">Stuck</button>
+                            <button class="done" ng-click="updateStatus(3)">Done!</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="send-wrapper" ng-class="{'status-open': statusOpen}">
+                    <div class="input-wrapper">
+                        <input type="text" ng-model="chatData.message" ng-enter="sendChat()" />
+                    </div>
+                    <button ng-click="sendChat()">Send</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- <dz-tabs>
             <dz-tab-pane title="Chat" pane-class="chat-pane">
 
                 <div class="chat-box">
@@ -52,7 +93,7 @@
                     </li>
                 </ul>
             </dz-tab-pane>
-        </dz-tabs>
-    </div>
+        </dz-tabs> -->
+    <!-- </div> -->
 
 </div>

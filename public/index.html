@@ -7,10 +7,24 @@
 
 	<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
 	<link rel="stylesheet" href="http://i.icomoon.io/public/temp/2a9352864c/Duzuro/style.css">
+	<link rel="stylesheet" href="http://i.icomoon.io/public/temp/98ac47d048/Duzuro/style.css">
 	<link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
 <body>
 	<header id="header" ng-controller="HeaderCtrl">
+
+		<!-- <div class="back-link">
+			<input type="hidden" ng-value="pageState.back_state" />
+			<button ng-show="pageState.projects" ng-click="navigate('projects')"><i class="icon-arrow-left4"></i>Back</button>
+			<button ng-show="pageState.project_milestones" ng-click="navigate()"><i class="icon-arrow-left4"></i>Back</button>
+			<button ng-show="pageState.project_milestone" ng-click="navigate('projects')"><i class="icon-arrow-left4"></i>Back</button>
+
+			<span ng-show="pageState.project_milestones">hello 1</span>
+		</div> -->
+
+		<div class="title">
+			<h1>{{ pageState.page_title }}<h1>
+		</div>
 
 		<!-- <div class="login-box" ng-hide="authData.loggedIn">
 			<div class="input-wrapper">
